@@ -18,6 +18,7 @@ export default function CertificationPage() {
 
   const [showAddModal, setShowAddModal] = useState(false)
   const [newCert, setNewCert] = useState({ agency: "PADI", title: "", date: "", certNumber: "" })
+  const dateRef = useRef(null)
   const [saving, setSaving] = useState(false)
 
   const isMetric = JSON.parse(localStorage.getItem("useMetric") ?? "true")
@@ -62,14 +63,15 @@ export default function CertificationPage() {
 
   async function handleAddCert(e) {
     e.preventDefault()
-    if (!newCert.title || !newCert.date) return
+    const dateVal = dateRef.current ? dateRef.current.value : newCert.date
+    if (!newCert.title || !dateVal) return
     setSaving(true)
     setApiError('')
     try {
       const created = await createCertification({
         certificationName: newCert.title,
         agency: newCert.agency,
-        dateIssued: newCert.date,
+        dateIssued: dateVal,
         certificationNumber: newCert.certNumber || null,
         isActive: true
       })
@@ -281,7 +283,7 @@ export default function CertificationPage() {
               </div>
               <div className="form-element">
                 <label>Date of Issue</label>
-                <input type="date" value={newCert.date} onChange={(e) => setNewCert(p => ({ ...p, date: e.target.value }))} required />
+                <input type="date" ref={dateRef} defaultValue={newCert.date} required />
               </div>
               <div className="form-element">
                 <label>Certification Number</label>
