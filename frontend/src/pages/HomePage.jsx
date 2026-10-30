@@ -152,25 +152,27 @@ export default function HomePage() {
 
           <DiveComputerImport onDone={loadDives} />
 
-          <button className="btn-dashboard-nav" onClick={() => navigate("/sites")}>
-            <MapPin size={20} />
-            Sites
-          </button>
+          <div className="home-secondary-nav">
+            <button className="btn-dashboard-nav" onClick={() => navigate("/sites")}>
+              <MapPin size={20} />
+              Sites
+            </button>
 
-          <button className="btn-dashboard-nav" onClick={() => navigate("/trips")}>
-            <TowerControl size={20} />
-            Trips
-          </button>
+            <button className="btn-dashboard-nav" onClick={() => navigate("/trips")}>
+              <TowerControl size={20} />
+              Trips
+            </button>
 
-          <button className="btn-dashboard-nav" onClick={() => navigate("/map")}>
-            <Map size={20} />
-            Map
-          </button>
+            <button className="btn-dashboard-nav" onClick={() => navigate("/map")}>
+              <Map size={20} />
+              Map
+            </button>
 
-          <button className="btn-dashboard-nav" onClick={() => navigate("/analytics")}>
-            <BarChart3 size={20} />
-            Stats
-          </button>
+            <button className="btn-dashboard-nav" onClick={() => navigate("/analytics")}>
+              <BarChart3 size={20} />
+              Stats
+            </button>
+          </div>
 
           <button className="btn-dashboard-nav" onClick={toggleTheme} title="Toggle theme">
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}

@@ -13,8 +13,8 @@ import "./MapPage.css"
 
 /* ─── Depth → colour (Consistent App Palette) ─────────────────────── */
 function depthToColor(depth) {
-  if (!depth || depth === 0) return { hex: "var(--accent)", r: 56,  g: 189, b: 248 }
-  if (depth <= 10)           return { hex: "var(--accent)", r: 56,  g: 189, b: 248 }
+  if (!depth || depth === 0) return { hex: "#22d3ee", r: 34,  g: 211, b: 238 }
+  if (depth <= 10)           return { hex: "#22d3ee", r: 34,  g: 211, b: 238 }
   if (depth <= 20)           return { hex: "#22c55e", r: 34,  g: 197, b: 94  }
   if (depth <= 30)           return { hex: "#eab308", r: 234, g: 179, b: 8   }
   return                            { hex: "#ef4444", r: 239, g: 68,  b: 68  }
@@ -76,7 +76,7 @@ export default function MapPage() {
   const backgroundImageUrl = "https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png"
 
   const telemetryLegend = [
-    { hex: "var(--accent)", range: "0-10m", label: "Shallow" },
+    { hex: "#22d3ee", range: "0-10m", label: "Shallow" },
     { hex: "#22c55e", range: "11-20m", label: "Recreational" },
     { hex: "#eab308", range: "21-30m", label: "Deep Reef" },
     { hex: "#ef4444", range: "30m+", label: "Technical" }
@@ -294,7 +294,7 @@ export default function MapPage() {
           globeImageUrl={globeImageUrl}
           backgroundImageUrl={backgroundImageUrl}
           globeTileEngineUrl={(x,y,z) => satelliteBase.replace("{x}",x).replace("{y}",y).replace("{z}",z)}
-          backgroundColor="var(--base)"
+          backgroundColor="#07101f"
           waitForGlobeReady={true}
 
           htmlElementsData={allMarkers}

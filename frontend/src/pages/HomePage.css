@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+/* Hide redundant top nav on desktop where the sidebar is present */
+@media (min-width: 1024px) {
+  .home-secondary-nav { display: none; }
+}
+
 /* --- Header & Layout System --- */
 .header {
   display: flex;

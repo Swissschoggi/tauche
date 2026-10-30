@@ -11,7 +11,7 @@ const BADGE_DEFS = [
     icon: Waves,
     label: "First Splash",
     desc: "Logged your first dive",
-    color: "var(--accent)",
+    color: "#22d3ee",
     check: (dives) => dives.length >= 1,
   },
   {
@@ -119,7 +119,7 @@ const BADGE_DEFS = [
     icon: Gauge,
     label: "SAC Master",
     desc: "Achieved <12 bar/min SAC",
-    color: "var(--accent)",
+    color: "#22d3ee",
     check: (dives) => {
       return dives.some((d) => {
         if (!d.pressureStartBar || !d.pressureEndBar || !d.durationMinutes || !d.depthMeters)
@@ -216,5 +216,5 @@ function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
     ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
-    : "56, 189, 248"
+    : "34, 211, 238"
 }
