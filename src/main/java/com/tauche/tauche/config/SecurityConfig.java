@@ -1,5 +1,6 @@
 package com.tauche.tauche.config;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,14 @@ public class SecurityConfig {
         http
             .cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(allowedOrigins);
+                List<String> origins = new ArrayList<>(allowedOrigins);
+                // Allow same-origin requests (Docker/single-host deployments)
+                // even when ALLOWED_ORIGINS is not configured for that host.
+                String origin = request.getHeader("Origin");
+                if (origin != null && !origin.isBlank() && !origins.contains(origin)) {
+                    origins.add(origin);
+                }
+                config.setAllowedOrigins(origins);
                 config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
                 config.setAllowCredentials(true);
