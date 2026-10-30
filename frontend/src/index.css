@@ -626,3 +626,48 @@ tbody tr:hover { background: var(--surface-2); }
 
 /* mobile nav handled in its own css; ensure hidden on desktop */
 @media (min-width: 769px) { .mobile-nav { display: none !important; } }
+
+/* ---- Dive badges (achievements) ---- */
+.dive-badges-section {
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-l) var(--space-xl);
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+}
+.dive-badges-header {
+  display: flex; align-items: center; gap: var(--space-s);
+  margin-bottom: var(--space-m);
+  font-size: var(--step-0); font-weight: 600; color: var(--ink);
+  font-family: var(--font-display);
+}
+.dive-badges-count {
+  margin-left: auto; font-size: var(--step--1); font-weight: 500;
+  color: var(--ink-3); background: var(--surface-2);
+  padding: var(--space-3xs) var(--space-s); border-radius: 999px;
+  font-family: var(--font-mono);
+}
+.dive-badges-grid { display: flex; flex-wrap: wrap; gap: var(--space-s); }
+.dive-badge {
+  display: flex; align-items: center; gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-s) var(--space-2xs) var(--space-2xs);
+  border-radius: 999px; transition: all var(--dur) var(--ease); cursor: default;
+  border: var(--border); background: var(--surface-2);
+}
+.dive-badge.earned:hover { transform: translateY(-2px); }
+.dive-badge.locked { opacity: 0.45; }
+.dive-badge-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid; flex-shrink: 0;
+}
+.dive-badge.earned .dive-badge-icon { animation: pulseGlow 3s ease-in-out infinite; }
+.dive-badge-label { font-size: var(--step--1); font-weight: 500; white-space: nowrap; color: var(--ink); }
+.dive-badges-toggle {
+  display: inline-flex; align-items: center; gap: var(--space-2xs);
+  margin-top: var(--space-m); padding: var(--space-2xs) var(--space-m);
+  background: var(--surface-2); border: var(--border); border-radius: 999px;
+  color: var(--ink-3); font-size: var(--step--1); cursor: pointer;
+  transition: var(--dur-fast) var(--ease); min-height: auto;
+}
+.dive-badges-toggle:hover { background: var(--surface-3); color: var(--ink); }
