@@ -25,7 +25,7 @@ public class CertificationService {
             .diver(diver)
             .certificationName(dto.getCertificationName())
             .agency(dto.getAgency())
-            .maxDepth(dto.getMaxDepth())
+            .maxDepth(dto.getMaxDepth() != null ? dto.getMaxDepth() : 0)
             .dateIssued(dto.getDateIssued())
             .expiryDate(dto.getExpiryDate())
             .certificationNumber(dto.getCertificationNumber())
@@ -69,7 +69,7 @@ public class CertificationService {
         
         cert.setCertificationName(dto.getCertificationName());
         cert.setAgency(dto.getAgency());
-        cert.setMaxDepth(dto.getMaxDepth());
+        cert.setMaxDepth(dto.getMaxDepth() != null ? dto.getMaxDepth() : cert.getMaxDepth() != null ? cert.getMaxDepth() : 0);
         cert.setDateIssued(dto.getDateIssued());
         cert.setExpiryDate(dto.getExpiryDate());
         cert.setCertificationNumber(dto.getCertificationNumber());
