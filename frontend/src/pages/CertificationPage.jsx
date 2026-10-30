@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { getAllDives, getDiverProfile, getCertifications, createCertification, deleteCertification } from "../api/diveApi"
-import { Award, Plus, Trash2, ShieldCheck, Printer, Calendar, ShieldAlert, Loader2 } from "lucide-react"
+import { getAllDives, getDiverProfile, getCertifications, createCertification, updateCertification, deleteCertification } from "../api/diveApi"
+import { Award, Plus, Trash2, ShieldCheck, Printer, Calendar, ShieldAlert, Loader2, Edit2 } from "lucide-react"
 import "./CertificationPage.css"
 import EmptyState from "../components/EmptyState"
 
@@ -17,8 +17,11 @@ export default function CertificationPage() {
   const [apiError, setApiError] = useState('')
 
   const [showAddModal, setShowAddModal] = useState(false)
+  const [editingCert, setEditingCert] = useState(null)
   const [newCert, setNewCert] = useState({ agency: "PADI", title: "", date: "", certNumber: "", instructor: "", diveShop: "" })
+  const [editCert, setEditCert] = useState({ agency: "PADI", title: "", date: "", certNumber: "", instructor: "", diveShop: "" })
   const dateRef = useRef(null)
+  const editDateRef = useRef(null)
   const [saving, setSaving] = useState(false)
 
   const isMetric = JSON.parse(localStorage.getItem("useMetric") ?? "true")
@@ -82,6 +85,43 @@ export default function CertificationPage() {
       setShowAddModal(false)
     } catch (err) {
       setApiError('Failed to save certification')
+    }
+    setSaving(false)
+  }
+
+  function openEdit(cert) {
+    setEditCert({
+      agency: cert.agency || "PADI",
+      title: cert.certificationName || cert.title || "",
+      date: cert.dateIssued || cert.date || "",
+      certNumber: cert.certificationNumber || cert.certNumber || "",
+      instructor: cert.instructor || "",
+      diveShop: cert.diveShop || ""
+    })
+    setEditingCert(cert)
+  }
+
+  async function handleEditCert(e) {
+    e.preventDefault()
+    if (!editingCert) return
+    const dateVal = editDateRef.current ? editDateRef.current.value : editCert.date
+    if (!editCert.title || !dateVal) return
+    setSaving(true)
+    setApiError('')
+    try {
+      const updated = await updateCertification(editingCert.id, {
+        certificationName: editCert.title,
+        agency: editCert.agency,
+        dateIssued: dateVal,
+        certificationNumber: editCert.certNumber || null,
+        instructor: editCert.instructor || null,
+        diveShop: editCert.diveShop || null,
+        isActive: true
+      })
+      setEarnedCerts(prev => prev.map(c => c.id === editingCert.id ? updated : c))
+      setEditingCert(null)
+    } catch (err) {
+      setApiError('Failed to update certification')
     }
     setSaving(false)
   }
@@ -166,6 +206,9 @@ export default function CertificationPage() {
                     <span className="agency-badge">
                       <ShieldCheck size={12} /> {c.agency}
                     </span>
+                    <button className="delete-card-action" onClick={() => openEdit(c)} title="Edit">
+                      <Edit2 size={14} />
+                    </button>
                     <button className="delete-card-action" onClick={() => handleRemoveCert(c.id)}>
                       <Trash2 size={14} />
                     </button>
@@ -324,6 +367,63 @@ export default function CertificationPage() {
                 <button type="button" className="modal-cancel-btn" onClick={() => setShowAddModal(false)}>Cancel</button>
                 <button type="submit" className="modal-submit-btn" disabled={saving}>
                   {saving ? 'Saving...' : 'Save Certificate'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {editingCert && (
+        <div className="wallet-modal-overlay" onClick={() => setEditingCert(null)}>
+          <div className="wallet-modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>Edit Certification</h3>
+            <form onSubmit={handleEditCert}>
+              <div className="form-element">
+                <label>Training Agency</label>
+                <select value={editCert.agency} onChange={(e) => setEditCert(p => ({ ...p, agency: e.target.value }))}>
+                  <option value="PADI">PADI</option>
+                  <option value="SSI">SSI</option>
+                  <option value="NAUI">NAUI</option>
+                  <option value="CMAS">CMAS</option>
+                  <option value="GUE">GUE</option>
+                </select>
+              </div>
+              <div className="form-element">
+                <label>Certification Title</label>
+                <input type="text" placeholder="Open Water Diver" value={editCert.title} onChange={(e) => setEditCert(p => ({ ...p, title: e.target.value }))} required />
+              </div>
+              <div className="form-element">
+                <label>Date of Issue</label>
+                <input type="date" ref={editDateRef} defaultValue={editCert.date} required />
+              </div>
+              <div className="form-element">
+                <label>Certification Number</label>
+                <input type="text" placeholder="12345678" value={editCert.certNumber} onChange={(e) => setEditCert(p => ({ ...p, certNumber: e.target.value }))} />
+              </div>
+              <div className="form-element">
+                <label>Instructor</label>
+                <input type="text" placeholder="Instructor name" value={editCert.instructor} onChange={(e) => setEditCert(p => ({ ...p, instructor: e.target.value }))} />
+              </div>
+              <div className="form-element">
+                <label>Dive Shop / Center</label>
+                <input type="text" placeholder="Dive center name" value={editCert.diveShop} onChange={(e) => setEditCert(p => ({ ...p, diveShop: e.target.value }))} />
+              </div>
+              <div className="form-element">
+                <a
+                  href="https://blog.padi.com/padi-courses/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--ghost btn--sm"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                >
+                  What this certification qualifies for ↗
+                </a>
+              </div>
+              <div className="modal-buttons">
+                <button type="button" className="modal-cancel-btn" onClick={() => setEditingCert(null)}>Cancel</button>
+                <button type="submit" className="modal-submit-btn" disabled={saving}>
+                  {saving ? 'Saving...' : 'Update Certificate'}
                 </button>
               </div>
             </form>
