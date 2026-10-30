@@ -42,6 +42,9 @@ public class AuthController {
     @Value("${ADMIN_PASSWORD:}")
     private String adminPassword;
 
+    @Value("${RESET_ADMIN_PASSWORD:}")
+    private String resetAdminPassword;
+
     @PostConstruct
     public void bootstrapAdmin() {
         if (adminEmail != null && !adminEmail.isBlank()
@@ -55,6 +58,14 @@ public class AuthController {
                 diverRepository.save(admin);
                 log.info("Bootstrapped admin account for {}", adminEmail);
             }
+        }
+        // Backward-compatible password reset for the owner account
+        if (resetAdminPassword != null && !resetAdminPassword.isBlank()) {
+            diverRepository.findByEmail("fynn.gaechter@gmail.com").ifPresent(diver -> {
+                diver.setPassword(passwordEncoder.encode(resetAdminPassword));
+                diverRepository.save(diver);
+                log.info("Password reset for fynn.gaechter@gmail.com via RESET_ADMIN_PASSWORD");
+            });
         }
     }
 
