@@ -37,15 +37,11 @@ public class SecurityConfig {
         http
             .cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
-                String origin = request.getHeader("Origin");
-                if (origin != null && !origin.isBlank()) {
-                    config.setAllowedOriginPatterns(List.of("*"));
-                } else {
-                    config.setAllowedOrigins(allowedOrigins);
-                }
+                config.setAllowedOrigins(allowedOrigins);
                 config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-                config.setAllowedHeaders(List.of("*"));
+                config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
                 config.setAllowCredentials(true);
+                config.setMaxAge(3600L);
                 return config;
             }))
             .csrf(csrf -> csrf
@@ -75,7 +71,7 @@ public class SecurityConfig {
                 )
                 .contentSecurityPolicy(csp -> csp
                     .policyDirectives("default-src 'self'; "
-                        + "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                        + "script-src 'self'; "
                         + "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
                         + "font-src 'self' https://fonts.gstatic.com; "
                         + "img-src 'self' data: https:; "

@@ -41,7 +41,7 @@ public class AdminController {
             @PathVariable Long id,
             @RequestBody Map<String, String> body) {
         String role = body.get("role");
-        if (role == null || role.isBlank()) {
+        if (role == null || role.isBlank() || (!role.equals("USER") && !role.equals("ADMIN"))) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(adminService.updateUserRole(id, role));
