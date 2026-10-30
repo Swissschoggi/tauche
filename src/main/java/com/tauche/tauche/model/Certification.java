@@ -30,9 +30,8 @@ public class Certification {
     @Column(nullable = false)
     private String agency;
     
-    @Column(nullable = false)
     private Integer maxDepth;
-    
+
     @NotNull
     @Column(nullable = false)
     private LocalDate dateIssued;

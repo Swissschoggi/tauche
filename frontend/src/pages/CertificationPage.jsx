@@ -311,7 +311,7 @@ export default function CertificationPage() {
               </div>
               <div className="form-element">
                 <a
-                  href="https://www.padi.com/courses"
+                  href="https://www.padi.com/help/what-can-i-do-with-my-padi-certification"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn--ghost btn--sm"
