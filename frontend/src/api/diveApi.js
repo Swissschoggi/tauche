@@ -111,19 +111,12 @@ async function sha256(str) {
   return sha256Sync(str);
 }
 
-async function fetchNonce(email) {
-  const res = await api.post("/auth/nonce", { email });
-  return res.data.nonce;
-}
-
 export async function loginUser(email, password) {
-  await fetchNonce(email);
   const response = await api.post("/auth/login", { email, password });
   return response;
 }
 
 export async function registerUser(email, password) {
-  await fetchNonce(email);
   const response = await api.post("/auth/register", { email, password });
   return response;
 }
