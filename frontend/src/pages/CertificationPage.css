@@ -30,13 +30,13 @@
 
 .print-btn {
   background: rgba(30, 41, 59, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid var(--line) !important;
   color: var(--ink) !important;
 }
 
 .print-btn:hover {
   background: rgba(51, 65, 85, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: var(--line) !important;
 }
 
 .add-cert-card-btn {
@@ -249,7 +249,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 2;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--line);
   padding-top: 12px;
   width: 100%;
 }
@@ -338,7 +338,7 @@
 
 .modal-submit-btn {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--ink);
   border: none;
   border-radius: 10px;
   padding: 10px 20px;

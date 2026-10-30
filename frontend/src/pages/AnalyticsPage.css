@@ -51,7 +51,7 @@
 .back-dashboard-global-btn,
 .nav-settings-global-btn {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--ink-3);
   padding: 8px 16px;
@@ -69,7 +69,7 @@
 .back-dashboard-global-btn:hover,
 .nav-settings-global-btn:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--line);
   color: #f1f5f9;
 }
 
@@ -118,7 +118,7 @@
   align-items: center;
   gap: 16px;
   background: rgba(30, 41, 59, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 18px;
 }
@@ -191,7 +191,7 @@
   align-items: center;
   justify-content: center;
   height: 150px;
-  border: 1px dashed rgba(255, 255, 255, 0.06);
+  border: 1px dashed var(--line);
   border-radius: 12px;
   color: var(--ink-3);
   font-size: 13px;
@@ -262,7 +262,7 @@
   font-size: 11px;
   color: var(--ink-3);
   margin-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--line);
   padding-top: 6px;
 }
 
@@ -321,7 +321,7 @@
 
 .analytics-tip-footer {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 10px;
   font-size: 11px;

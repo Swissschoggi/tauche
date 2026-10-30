@@ -18,7 +18,7 @@
   overflow: hidden;
   margin-bottom: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
 }
 
 .dive-hero img {
@@ -43,7 +43,7 @@
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .hero-overlay p {
@@ -89,7 +89,7 @@
   align-items: center !important;
   padding: 12px 0 !important;
   font-size: 14px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-bottom: 1px solid var(--line) !important;
   width: 100% !important;
   gap: 12px;
 }
@@ -133,8 +133,8 @@
   min-width: 0;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  border: 1px solid var(--line);
+  color: var(--ink);
   padding: 6px 12px;
   border-radius: 8px;
   outline: none;
@@ -201,7 +201,7 @@
   color: var(--accent);
   padding: 8px 12px;
   border-radius: var(--btn-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--line);
   cursor: pointer;
   font-size: 13px;
   display: inline-flex;
@@ -222,7 +222,7 @@
   left: 0;
   right: 0;
   background: #0b1220;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: 10px;
   margin-top: 6px;
   max-height: 220px;
@@ -276,7 +276,7 @@
 .hero-overlay input.hero-title-input {
   background: rgba(15, 23, 42, 0.6);
   border: 2px solid var(--accent);
-  color: #ffffff;
+  color: var(--ink);
   font-size: 32px;
   font-weight: 700;
   padding: 4px 12px;

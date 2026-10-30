@@ -23,8 +23,8 @@ public class RateLimitingFilter implements Filter {
 
     private final Map<String, Entry> requestCounts = new ConcurrentHashMap<>();
     private static final long WINDOW_MS = 60_000;
-    private static final int AUTH_MAX_PER_WINDOW = 20;
-    private static final int API_MAX_PER_WINDOW = 500;
+    private static final int AUTH_MAX_PER_WINDOW = 100;
+    private static final int API_MAX_PER_WINDOW = 5000;
 
     private record Entry(int count, long windowStart) {}
 

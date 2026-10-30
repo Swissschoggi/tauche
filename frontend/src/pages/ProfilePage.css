@@ -90,7 +90,7 @@
 
 .logout-action-btn:hover {
   background: rgba(239, 68, 68, 0.2);
-  color: #fff;
+  color: var(--ink);
 }
 
 .back-home-btn {
@@ -110,7 +110,7 @@
 
 .back-home-btn:hover {
   background: rgba(144, 224, 239, 0.18);
-  color: #fff;
+  color: var(--ink);
 }
 
 .profile-tabs {
@@ -137,7 +137,7 @@
 .profile-tabs button.active {
   background: var(--accent, #3b82f6);
   border-color: var(--accent, #3b82f6);
-  color: #fff;
+  color: var(--ink);
 }
 
 .profile-tabs button:hover:not(.active) {
@@ -392,7 +392,7 @@
 
 .stat-node.centered-node {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   padding: 18px 24px;
   border-radius: 12px;
   display: flex;
@@ -450,7 +450,7 @@
 
 .buddy-stat-item {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 14px;
   display: flex;

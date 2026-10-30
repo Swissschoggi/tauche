@@ -186,7 +186,7 @@
 
 .site-card {
   background: rgba(17, 24, 39, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
   border-radius: 18px;
   padding: 20px;
   cursor: pointer;
@@ -261,13 +261,13 @@
   gap: 12px;
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--line);
   flex-wrap: wrap;
 }
 
 .site-stat {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
   padding: 5px 10px;
   border-radius: 999px;
   font-size: 12px;
@@ -359,7 +359,7 @@
   right: 16px;
   float: right;
   background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--line);
   color: white;
   width: 32px;
   height: 32px;
@@ -382,7 +382,7 @@
 /* Modal Header */
 .site-modal-header {
   padding: 8px 24px 20px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--line);
 }
 
 .site-modal-header h2 {
@@ -469,7 +469,7 @@
   border-radius: 12px;
   padding: 12px 16px;
   margin-bottom: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
 }
 
 .site-note:last-child {
@@ -575,7 +575,7 @@
 
 .cancel-btn-modern {
   background: rgba(71, 85, 105, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   color: var(--ink-3);
   cursor: pointer;
   padding: 10px 24px;

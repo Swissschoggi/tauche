@@ -170,7 +170,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--line);
 }
 
 .trips-suggestion-item:last-child { border-bottom: none; }
@@ -199,11 +199,11 @@
 
 .trips-color-swatch:hover {
   transform: scale(1.15);
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--line);
 }
 
 .trips-color-swatch.active {
-  border-color: #fff;
+  border-color: var(--ink);
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   transform: scale(1.1);
 }
@@ -231,7 +231,7 @@
   gap: 12px;
   padding: 10px 14px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--line);
   transition: background 0.15s;
 }
 
@@ -285,7 +285,7 @@
   justify-content: flex-end;
   margin-top: 28px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--line);
 }
 
 /* ── Buttons ── */
@@ -319,7 +319,7 @@
 
 .trips-btn-secondary {
   background: rgba(71, 85, 105, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   color: var(--ink-3);
   border-radius: 12px;
   padding: 10px 20px;
@@ -358,7 +358,7 @@
 
 .trips-icon-btn {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   color: var(--ink-3);
   border-radius: 8px;
   padding: 7px;
@@ -710,7 +710,7 @@
   gap: 14px;
   padding: 14px 16px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
@@ -782,7 +782,7 @@
 
 .trips-status-btn {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--line);
   color: var(--ink-3);
   border-radius: 10px;
   padding: 8px 14px;
@@ -1210,7 +1210,7 @@
 
 .trips-itinerary-day {
   background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -1221,7 +1221,7 @@
   align-items: center;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--line);
 }
 
 .trips-itinerary-day-num {
@@ -1258,7 +1258,7 @@
 
 .trips-itinerary-card {
   background: rgba(30, 41, 59, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px;
   display: flex;

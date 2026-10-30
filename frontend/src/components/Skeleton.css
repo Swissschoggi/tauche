@@ -2,7 +2,7 @@
   background: rgba(17, 24, 39, 0.85);
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
 }
 
 .skeleton-image {

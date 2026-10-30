@@ -25,7 +25,7 @@
   gap: 16px;
   background: rgba(15, 23, 42, 0.6);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
   backdrop-filter: blur(12px);
   margin: 24px;
 }
@@ -56,7 +56,7 @@
   align-items: center;
   padding: 16px 24px;
   background: rgba(15, 23, 42, 0.7);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
   z-index: 10;
 }
@@ -72,7 +72,7 @@
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--ink-3);
   padding: 8px 14px;
@@ -85,7 +85,7 @@
 
 .mp-back-btn:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--line);
   color: #f1f5f9;
 }
 
@@ -150,7 +150,7 @@
   width: 34px;
   height: 34px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink-3);
   cursor: pointer;
@@ -160,7 +160,7 @@
 .mp-utility-btn:hover {
   color: var(--accent);
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--line);
 }
 
 /* ── Canvas Frame Wrapper ── */
@@ -181,7 +181,7 @@
   bottom: 20px;
   width: 320px;
   background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: 16px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -203,7 +203,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--line);
 }
 
 .mp-panel-headline {
@@ -423,7 +423,7 @@
 
 .mp-stat-block {
   background: rgba(17, 24, 39, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px;
   display: flex;
@@ -531,7 +531,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--line);
   transform: translate(-50%, -50%);
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 3;
@@ -620,7 +620,7 @@
   top: 12px;
   right: 12px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--ink-3);
   cursor: pointer;
@@ -669,7 +669,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--line);
   padding-top: 12px;
 }
 
@@ -687,7 +687,7 @@
   width: 100%;
   background: rgba(255, 255, 255, 0.02);
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--line);
   color: var(--accent);
   font-family: inherit;
   font-size: 13px;

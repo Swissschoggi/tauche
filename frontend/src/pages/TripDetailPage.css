@@ -536,7 +536,7 @@
   border: 1px solid rgba(34, 211, 238, 0.2);
   padding: 10px 12px;
   border-radius: 6px;
-  color: #fff;
+  color: var(--ink);
   font-size: 14px;
 }
 
@@ -555,7 +555,7 @@
   border: 1px solid rgba(34, 211, 238, 0.2);
   padding: 10px 12px;
   border-radius: 6px;
-  color: #fff;
+  color: var(--ink);
   font-size: 14px;
   resize: vertical;
 }
@@ -585,7 +585,7 @@
 
 .action-btn.cancel {
   background: rgba(148, 163, 184, 0.15);
-  color: #fff;
+  color: var(--ink);
 }
 
 .trip-detail-description {
@@ -627,7 +627,7 @@
   background: rgba(15, 23, 42, 0.4);
   padding: 10px 14px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
 }
 
 .item-meta {
@@ -639,7 +639,7 @@
 .item-meta .title {
   font-size: 14px;
   font-weight: 500;
-  color: #fff;
+  color: var(--ink);
 }
 
 .item-meta .sub {

@@ -15,7 +15,7 @@
   max-height: 90vh;
   overflow: auto;
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 24px;
   color: var(--ink);
@@ -38,9 +38,9 @@
 }
 .dci-help { color: var(--ink-3); font-size: 13px; margin-bottom: 16px; line-height: 1.5; }
 .dci-preview { font-size: 13px; margin: 12px 0 6px; color: var(--ink-3); }
-.dci-table-wrap { overflow: auto; max-height: 160px; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; margin-bottom: 12px; }
+.dci-table-wrap { overflow: auto; max-height: 160px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 12px; }
 .dci-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.dci-table th, .dci-table td { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
+.dci-table th, .dci-table td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; }
 .dci-table th { background: rgba(255,255,255,0.04); color: var(--ink-3); }
 .dci-map { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
 .dci-map-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; }

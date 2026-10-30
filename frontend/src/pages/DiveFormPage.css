@@ -170,7 +170,7 @@
 .dive-form-page .back-btn:hover:not(:disabled) {
   background: rgba(144, 224, 239, 0.18);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--ink);
 }
 
 .dive-form-page .form-error-banner {

@@ -93,7 +93,7 @@
 .tag-photo-btn, .delete-photo-btn {
   background: rgba(0,0,0,0.6);
   border: none;
-  color: #fff;
+  color: var(--ink);
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 10px;
@@ -195,7 +195,7 @@
   gap: 8px;
   margin-bottom: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .tag-badge {
@@ -230,7 +230,7 @@
   background: rgba(2, 6, 17, 0.6);
   border: 1px solid rgba(144, 224, 239, 0.2);
   border-radius: 10px;
-  color: #fff;
+  color: var(--ink);
 }
 
 .tag-input-area button {
@@ -251,7 +251,7 @@
 
 .suggested-tags button {
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--line);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
@@ -301,7 +301,7 @@
   height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid var(--line) !important;
   color: white !important;
   display: flex;
   align-items: center;
@@ -325,7 +325,7 @@
   height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid var(--line) !important;
   color: white !important;
   display: flex;
   align-items: center;
