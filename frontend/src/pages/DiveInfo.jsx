@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { useToast } from "../context/ToastContext"
 import { getDiveById, updateDive, uploadDiveImage, getEquipmentCloset } from "../api/diveApi" 
 import {
   Calendar, MapPin, ArrowDown, Timer, Compass, Thermometer,
@@ -111,6 +112,7 @@ function EditableRow({ editing, icon: Icon, label, name, value, onChange, isMetr
 export default function DiveInfo() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const toast = useToast()
 
   const [isEditing, setIsEditing] = useState(false)
   const [dive, setDive] = useState(null)
@@ -187,19 +189,19 @@ export default function DiveInfo() {
       let currentDiveState = { ...formData }
 
       if (!currentDiveState.diveTitle || !currentDiveState.date) {
-        alert("Dive Title and Date are required.")
+        toast.error("Dive Title and Date are required.")
         return
       }
       if (!currentDiveState.location) {
-        alert("Location is required.")
+        toast.error("Location is required.")
         return
       }
       if (currentDiveState.depthMeters === "" || currentDiveState.depthMeters == null) {
-        alert("Depth is required.")
+        toast.error("Depth is required.")
         return
       }
       if (currentDiveState.durationMinutes === "" || currentDiveState.durationMinutes == null) {
-        alert("Duration is required.")
+        toast.error("Duration is required.")
         return
       }
       
@@ -246,7 +248,7 @@ export default function DiveInfo() {
       setIsEditing(false)
     } catch (err) {
       console.error("Error saving dive:", err)
-      alert("Failed to save changes: " + (err.response?.data?.message || err.message))
+      toast.error("Failed to save changes: " + (err.response?.data?.message || err.message))
     }
   }
 
@@ -314,7 +316,7 @@ export default function DiveInfo() {
           style={{ 
             background: 'rgba(56, 189, 248, 0.15)',
             border: '1px solid rgba(56, 189, 248, 0.3)',
-            color: '#38bdf8',
+            color: 'var(--accent)',
             padding: '8px 16px',
             display: 'flex',
             alignItems: 'center',
@@ -346,10 +348,10 @@ export default function DiveInfo() {
         <button 
           onClick={async () => {
             try {
-              await shareDive(dive || formData)
+              await shareDive(dive || formData, toast)
             } catch (err) {
               console.error('Share error:', err)
-              alert('Failed to share. Please try again.')
+              toast.error('Failed to share. Please try again.')
             }
           }}
           style={{ 
@@ -451,7 +453,7 @@ export default function DiveInfo() {
                     </option>
                   ))}
                 </select>
-                <small style={{ color: '#64748b', fontSize: '11px', display: 'block', marginTop: '5px' }}>
+                <small style={{ color: 'var(--ink-3)', fontSize: '11px', display: 'block', marginTop: '5px' }}>
                   Hold Ctrl/Cmd to select multiple items
                 </small>
               </div>
@@ -479,14 +481,14 @@ export default function DiveInfo() {
           ) : (
             <div 
               className="notes-content-view" 
-              style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.6", marginTop: "10px" }}
+              style={{ color: "var(--ink-3)", fontSize: "14px", lineHeight: "1.6", marginTop: "10px" }}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(dive.notes || "No log commentary available for this session.") }} 
             />
           )}
         </div>
       </div>
 
-      <h3 style={{ marginTop: '32px', marginBottom: '16px', color: '#38bdf8' }}>📸 Dive Photo Gallery</h3>
+      <h3 style={{ marginTop: '32px', marginBottom: '16px', color: 'var(--accent)' }}>📸 Dive Photo Gallery</h3>
       <PhotoGallery diveId={id} />
 
       {showMedical && (

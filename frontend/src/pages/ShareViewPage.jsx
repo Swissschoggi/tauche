@@ -25,7 +25,7 @@ export default function ShareViewPage() {
         <div className="info-card" style={{ maxWidth: "400px", margin: "0 auto" }}>
           <h3>🔒 Invalid Link</h3>
           <p>{error}</p>
-          <Link to="/" style={{ color: "#38bdf8", textDecoration: "none" }}>
+          <Link to="/" style={{ color: "var(--accent)", textDecoration: "none" }}>
             ← Back to Tauche
           </Link>
         </div>
@@ -53,7 +53,7 @@ export default function ShareViewPage() {
         fontSize: "13px"
       }}>
         🔗 Shared Dive Log • 
-        <Link to="/" style={{ color: "#38bdf8", marginLeft: "8px" }}>Sign in to your own logbook →</Link>
+        <Link to="/" style={{ color: "var(--accent)", marginLeft: "8px" }}>Sign in to your own logbook →</Link>
       </div>
 
       <div className="dive-hero">

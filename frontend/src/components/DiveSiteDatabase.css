@@ -27,7 +27,7 @@
 
 .sites-header h3 {
   font-size: 26px;
-  color: #f8fafc;
+  color: var(--ink);
   font-weight: 700;
   margin: 0 0 4px 0;
   display: flex;
@@ -36,11 +36,11 @@
 }
 
 .sites-header h3 svg {
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 .sites-header p {
-  color: #94a3b8;
+  color: var(--ink-3);
   font-size: 14px;
   margin: 0;
 }
@@ -53,9 +53,9 @@
 }
 
 .import-btn {
-  background: rgba(56, 189, 248, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  color: #38bdf8;
+  background: rgba(34, 211, 238, 0.15);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--accent);
   border-radius: 12px;
   padding: 10px 18px;
   font-weight: 600;
@@ -68,7 +68,7 @@
 }
 
 .import-btn:hover:not(:disabled) {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(34, 211, 238, 0.25);
   transform: translateY(-1px);
 }
 
@@ -78,8 +78,8 @@
 }
 
 .add-site-btn {
-  background: linear-gradient(135deg, #90e0ef, #0077b6);
-  color: #020617;
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+  color: var(--base);
   border: none;
   border-radius: 12px;
   padding: 10px 20px;
@@ -113,26 +113,26 @@
 }
 
 .search-bar:focus-within {
-  border-color: #38bdf8;
+  border-color: var(--accent);
   background: rgba(17, 24, 39, 0.8);
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
 }
 
 .search-bar svg {
-  color: #64748b;
+  color: var(--ink-3);
 }
 
 .search-bar input {
   background: transparent;
   border: none;
-  color: #caf0f8;
+  color: var(--ink);
   font-size: 14px;
   outline: none;
   width: 100%;
 }
 
 .search-bar input::placeholder {
-  color: #475569;
+  color: var(--ink-3);
 }
 
 /* Stats Strip */
@@ -158,20 +158,20 @@
 
 .stat-badge:hover {
   transform: translateY(-2px);
-  border-color: rgba(56, 189, 248, 0.2);
+  border-color: rgba(34, 211, 238, 0.2);
   background: rgba(17, 24, 39, 0.8);
 }
 
 .stat-value {
   font-size: 32px;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--accent);
   line-height: 1;
 }
 
 .stat-label {
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;
@@ -197,7 +197,7 @@
 
 .site-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(56, 189, 248, 0.4);
+  border-color: rgba(34, 211, 238, 0.4);
   background: rgba(17, 24, 39, 0.95);
 }
 
@@ -211,7 +211,7 @@
 .site-card-header h4 {
   font-size: 20px;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--ink);
   margin: 0;
   letter-spacing: -0.3px;
 }
@@ -226,7 +226,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #475569;
+  color: var(--ink-3);
 }
 
 .favorite-btn:hover {
@@ -244,7 +244,7 @@
 
 .site-location {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--ink-3);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -271,14 +271,14 @@
   padding: 5px 10px;
   border-radius: 999px;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--ink-3);
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
 .site-stat svg {
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 /* Empty State */
@@ -292,19 +292,19 @@
 }
 
 .empty-sites-state svg {
-  color: #475569;
+  color: var(--ink-3);
   margin-bottom: 20px;
   opacity: 0.5;
 }
 
 .empty-sites-state p {
-  color: #94a3b8;
+  color: var(--ink-3);
   font-size: 14px;
   margin-bottom: 8px;
 }
 
 .empty-sites-state small {
-  color: #64748b;
+  color: var(--ink-3);
   font-size: 12px;
 }
 
@@ -388,14 +388,14 @@
 .site-modal-header h2 {
   font-size: 28px;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--ink);
   margin: 0 0 8px 0;
   letter-spacing: -0.5px;
 }
 
 .modal-subtitle {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--ink-3);
   margin: 0;
 }
 
@@ -419,13 +419,13 @@
   display: block;
   font-size: 24px;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 .modal-stat-label {
   display: block;
   font-size: 10px;
-  color: #94a3b8;
+  color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: 4px;
@@ -447,7 +447,7 @@
 .site-info-section h4 {
   font-size: 13px;
   font-weight: 600;
-  color: #38bdf8;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 12px 0;
@@ -458,7 +458,7 @@
 
 .site-info-section p {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--ink-2);
   line-height: 1.6;
   margin: 0;
 }
@@ -478,7 +478,7 @@
 
 .note-date {
   font-size: 10px;
-  color: #64748b;
+  color: var(--ink-3);
   margin-bottom: 6px;
   font-family: monospace;
   letter-spacing: 0.3px;
@@ -486,7 +486,7 @@
 
 .site-note p {
   font-size: 13px;
-  color: #e2e8f0;
+  color: var(--ink);
   margin: 0;
 }
 
@@ -515,7 +515,7 @@
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #90e0ef;
+  color: var(--accent);
   letter-spacing: 0.75px;
   margin-bottom: 8px;
 }
@@ -529,7 +529,7 @@
   display: block;
   margin-top: 6px;
   font-size: 11px;
-  color: #64748b;
+  color: var(--ink-3);
 }
 
 .modern-input,
@@ -539,24 +539,24 @@
   border-radius: 12px;
   border: 1px solid rgba(144, 224, 239, 0.15);
   background: rgba(5, 10, 20, 0.4);
-  color: #caf0f8;
+  color: var(--ink);
   font-size: 14px;
   outline: none;
   transition: all 0.2s ease;
   box-sizing: border-box;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-text);
 }
 
 .modern-input:focus,
 .modern-textarea:focus {
-  border-color: #38bdf8;
+  border-color: var(--accent);
   background: rgba(5, 10, 20, 0.6);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.25);
 }
 
 .modern-input::placeholder,
 .modern-textarea::placeholder {
-  color: #475569;
+  color: var(--ink-3);
 }
 
 .modern-textarea {
@@ -576,7 +576,7 @@
 .cancel-btn-modern {
   background: rgba(71, 85, 105, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #94a3b8;
+  color: var(--ink-3);
   cursor: pointer;
   padding: 10px 24px;
   border-radius: 12px;
@@ -587,13 +587,13 @@
 
 .cancel-btn-modern:hover {
   background: rgba(71, 85, 105, 0.5);
-  color: #e2e8f0;
+  color: var(--ink);
   transform: translateY(-1px);
 }
 
 .submit-btn-modern {
-  background: linear-gradient(135deg, #38bdf8, #0284c7);
-  color: #0f172a;
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+  color: var(--base);
   border: none;
   border-radius: 12px;
   padding: 10px 28px;
@@ -609,7 +609,7 @@
 .submit-btn-modern:hover {
   transform: translateY(-1px);
   filter: brightness(1.05);
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
 }
 
 /* Animation */

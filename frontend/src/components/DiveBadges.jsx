@@ -11,7 +11,7 @@ const BADGE_DEFS = [
     icon: Waves,
     label: "First Splash",
     desc: "Logged your first dive",
-    color: "#38bdf8",
+    color: "var(--accent)",
     check: (dives) => dives.length >= 1,
   },
   {
@@ -119,7 +119,7 @@ const BADGE_DEFS = [
     icon: Gauge,
     label: "SAC Master",
     desc: "Achieved <12 bar/min SAC",
-    color: "#38bdf8",
+    color: "var(--accent)",
     check: (dives) => {
       return dives.some((d) => {
         if (!d.pressureStartBar || !d.pressureEndBar || !d.durationMinutes || !d.depthMeters)
@@ -194,7 +194,7 @@ export default function DiveBadges({ dives, favoriteSites }) {
             <span
               className="dive-badge-label"
               style={{
-                color: badge.earned ? "#e2e8f0" : "rgba(255,255,255,0.25)",
+                color: badge.earned ? "var(--ink)" : "rgba(255,255,255,0.25)",
               }}
             >
               {badge.label}

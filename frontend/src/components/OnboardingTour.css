@@ -1,0 +1,91 @@
+.tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483645;
+  pointer-events: none;
+}
+
+.tour-spotlight {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(2, 6, 23, 0.7);
+  border: 2px solid var(--accent);
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.tour-card {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, calc(100vw - 32px));
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  color: var(--ink);
+}
+
+.tour-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--ink-3) !important;
+  border: none;
+  padding: 6px;
+  min-height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tour-card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.tour-card p {
+  color: var(--ink-3);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tour-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--btn-gradient);
+  color: var(--base);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: auto;
+}
+
+.tour-btn--ghost {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--ink) !important;
+}
+
+.tour-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tour-progress {
+  font-size: 12px;
+  color: var(--ink-3);
+}

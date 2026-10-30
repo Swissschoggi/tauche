@@ -7,9 +7,13 @@ import {
 } from "../api/diveApi"
 import { Settings, UserPlus, Check, X, Search, Shield, Activity, TrendingUp, Clock, Droplets } from "lucide-react"
 import "./ProfilePage.css"
+import { useConfirm } from "../context/ConfirmContext"
+import { useToast } from "../context/ToastContext"
 
 export default function ProfilePage() {
   const navigate = useNavigate()
+  const confirm = useConfirm()
+  const toast = useToast()
   const [profile, setProfile] = useState(null)
   const [stats, setStats] = useState({ totalDives: 0, maxDepth: 0, bottomTime: 0 })
   const [loading, setLoading] = useState(true)
@@ -87,6 +91,7 @@ export default function ProfilePage() {
       setShowSearch(false)
       setBuddyError("")
       setBuddySuccess("Buddy request sent! Waiting for them to accept.")
+      toast.success("Buddy request sent")
       const [buddiesRes, pendingRes, outgoingRes] = await Promise.all([
         getBuddies(), getPendingBuddyRequests(), getOutgoingBuddyRequests()
       ])
@@ -96,6 +101,7 @@ export default function ProfilePage() {
     } catch (err) {
       const msg = err.response?.data?.message || "Failed to send buddy request"
       setBuddyError(msg)
+      toast.error(msg)
     }
   }
 
@@ -105,18 +111,25 @@ export default function ProfilePage() {
       setPendingRequests(prev => prev.filter(r => r.id !== buddyId))
       const updated = await getBuddies()
       setBuddies(updated)
+      toast.success("Buddy added")
     } catch (err) {
       console.error("Failed to accept request:", err)
+      toast.error("Failed to accept request")
     }
   }
 
   async function handleRemoveBuddy(buddyId) {
-    if (!window.confirm("Remove this buddy?")) return
+    const ok = await confirm({ title: "Remove buddy?", message: "Remove this buddy?", confirmText: "Remove", danger: true })
+    if (!ok) return
     try {
       await removeBuddy(buddyId)
       setBuddies(prev => prev.filter(b => b.id !== buddyId))
+      setPendingRequests(prev => prev.filter(r => r.id !== buddyId))
+      setOutgoingRequests(prev => prev.filter(r => r.id !== buddyId))
+      toast.success("Removed")
     } catch (err) {
       console.error("Failed to remove buddy:", err)
+      toast.error("Failed to remove")
     }
   }
 
@@ -274,7 +287,12 @@ return (
             {outgoingRequests.map(req => (
               <div key={req.id} className="buddy-request-item">
                 <span>{req.buddyEmail}</span>
-                <span className="pending-badge">Awaiting acceptance</span>
+                <div className="buddy-request-actions">
+                  <span className="pending-badge">Awaiting acceptance</span>
+                  <button className="btn-decline" onClick={() => handleRemoveBuddy(req.id)}>
+                    <X size={14} /> Cancel
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -286,6 +304,7 @@ return (
           <div className="buddies-list">
             {buddies.map(b => (
               <div key={b.id} className="buddy-item" onClick={() => handleViewBuddy(b.buddyId)} style={{ cursor: "pointer" }}>
+                <div className="buddy-avatar">{(b.buddyEmail || "?").charAt(0).toUpperCase()}</div>
                 <span>{b.buddyEmail}</span>
                 <button className="btn-remove" onClick={(e) => { e.stopPropagation(); handleRemoveBuddy(b.id) }}>
                   <X size={14} /> Remove

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { getAllDives, getDiverProfile, getCertifications, createCertification, deleteCertification } from "../api/diveApi"
 import { Award, Plus, Trash2, ShieldCheck, Printer, Calendar, ShieldAlert, Loader2 } from "lucide-react"
 import "./CertificationPage.css"
+import EmptyState from "../components/EmptyState"
 
 export default function CertificationPage() {
   const navigate = useNavigate()
@@ -146,10 +147,12 @@ export default function CertificationPage() {
           {apiError && <div className="cert-error">{apiError}</div>}
           
           {earnedCerts.length === 0 ? (
-            <div className="empty-wallet-container">
-              <Award size={32} />
-              <p>No certificates listed. Select 'Add Certification' to initialize structural logs.</p>
-            </div>
+            <EmptyState
+              icon={Award}
+              title="No certifications yet"
+              body="Add your training credentials to track your progress."
+              actions={<button className="btn btn--primary btn--sm" onClick={() => setShowAddModal(true)}>Add certification</button>}
+            />
           ) : (
             <div className="digital-cards-grid">
               {earnedCerts.map((c) => (

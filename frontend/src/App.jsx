@@ -1,4 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { ToastProvider } from "./context/ToastContext"
+import { ConfirmProvider } from "./context/ConfirmContext"
+import { ThemeProvider } from "./context/ThemeContext"
+import MobileNavHost from "./components/MobileNavHost"
+import SidebarHost from "./components/SidebarHost"
+import TopBar from "./components/TopBar"
 import HomePage from "./pages/HomePage"
 import DiveForm from "./pages/DiveFormPage"
 import DiveInfo from "./pages/DiveInfo"
@@ -21,7 +27,11 @@ import AdminPage from "./pages/AdminPage"
 
 function App() {
   return (
-    <BrowserRouter>
+    <ThemeProvider>
+      <ToastProvider>
+        <ConfirmProvider>
+          <BrowserRouter>
+      <SidebarHost />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
@@ -47,7 +57,11 @@ function App() {
         <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <MobileNavHost />
     </BrowserRouter>
+      </ConfirmProvider>
+    </ToastProvider>
+      </ThemeProvider>
   )
 }
 

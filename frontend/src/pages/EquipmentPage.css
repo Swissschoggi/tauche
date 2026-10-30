@@ -7,7 +7,7 @@
   margin: 0 auto;
   padding: var(--page-padding);
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-text);
 }
 
 .equipment-controls {
@@ -24,7 +24,7 @@
 .equipment-back-btn {
   background: rgba(30, 41, 59, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
+  color: var(--ink);
   padding: 10px 18px;
   border-radius: 12px;
   font-weight: 500;
@@ -42,8 +42,8 @@
 }
 
 .equipment-add-btn {
-  background: linear-gradient(135deg, #90e0ef, #0077b6);
-  color: #020617;
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+  color: var(--base);
   border: none;
   border-radius: 12px;
   padding: 10px 20px;
@@ -80,7 +80,7 @@
 .equipment-section-num {
   font-family: monospace;
   font-size: 13px;
-  color: #90e0ef;
+  color: var(--accent);
   border: 1px solid rgba(144, 224, 239, 0.3);
   padding: 2px 6px;
   border-radius: 4px;
@@ -103,7 +103,7 @@
 }
 
 .equipment-badge-card {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, var(--surface-2), var(--base));
   border: 1px solid rgba(144, 224, 239, 0.15);
   border-radius: 16px;
   padding: 24px;
@@ -122,8 +122,8 @@
 }
 
 .equipment-badge-card.editing {
-  border-color: #38bdf8;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
 }
 
 .equipment-badge-header {
@@ -136,7 +136,7 @@
 }
 
 .equipment-category-tag {
-  color: #90e0ef;
+  color: var(--accent);
   font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
@@ -164,7 +164,7 @@
 .equipment-edit-btn {
   background: transparent;
   border: none;
-  color: #38bdf8;
+  color: var(--accent);
   cursor: pointer;
   padding: 6px;
   border-radius: 8px;
@@ -174,14 +174,14 @@
 }
 
 .equipment-edit-btn:hover {
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(34, 211, 238, 0.1);
   color: #7dd3fc;
 }
 
 .equipment-delete-btn {
   background: transparent;
   border: none;
-  color: #475569;
+  color: var(--ink-3);
   cursor: pointer;
   padding: 6px;
   border-radius: 8px;
@@ -235,12 +235,12 @@
 .equipment-badge-body h4 {
   margin: 0 0 4px 0;
   font-size: 18px;
-  color: #f8fafc;
+  color: var(--ink);
 }
 
 .equipment-meta {
   font-size: 12px;
-  color: #64748b;
+  color: var(--ink-3);
   margin: 4px 0;
   display: flex;
   align-items: center;
@@ -250,7 +250,7 @@
 .equipment-sn {
   font-family: monospace;
   font-size: 12px;
-  color: #64748b;
+  color: var(--ink-3);
   margin: 4px 0;
   display: flex;
   align-items: center;
@@ -278,13 +278,13 @@
 .equipment-stats-row small {
   font-size: 10px;
   text-transform: uppercase;
-  color: #64748b;
+  color: var(--ink-3);
   letter-spacing: 0.5px;
 }
 
 .equipment-stats-row strong {
   font-size: 16px;
-  color: #f8fafc;
+  color: var(--ink);
 }
 
 .equipment-progress-container {
@@ -298,7 +298,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: #64748b;
+  color: var(--ink-3);
 }
 
 .equipment-progress-track {
@@ -335,7 +335,7 @@
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--ink-3);
   flex-wrap: wrap;
 }
 
@@ -345,7 +345,7 @@
   background: rgba(2, 6, 17, 0.6);
   border: 1px solid rgba(144, 224, 239, 0.2);
   border-radius: 8px;
-  color: #f8fafc;
+  color: var(--ink);
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -353,7 +353,7 @@
 
 .equipment-edit-input:focus {
   outline: none;
-  border-color: #38bdf8;
+  border-color: var(--accent);
 }
 
 .equipment-edit-row {
@@ -372,7 +372,7 @@
 .equipment-edit-field label {
   font-size: 10px;
   text-transform: uppercase;
-  color: #90e0ef;
+  color: var(--accent);
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -384,7 +384,7 @@
   background: rgba(2, 6, 17, 0.6);
   border: 1px solid rgba(144, 224, 239, 0.15);
   border-radius: 8px;
-  color: #caf0f8;
+  color: var(--ink);
   font-size: 13px;
   font-family: inherit;
 }
@@ -393,7 +393,7 @@
 .equipment-edit-field select:focus,
 .equipment-edit-field textarea:focus {
   outline: none;
-  border-color: #38bdf8;
+  border-color: var(--accent);
 }
 
 .equipment-edit-field.full-width {
@@ -405,7 +405,7 @@
   border-radius: 20px;
   padding: 64px 24px;
   text-align: center;
-  color: #475569;
+  color: var(--ink-3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -416,7 +416,7 @@
 .empty-equipment-state p {
   margin: 0;
   font-size: 14px;
-  color: #64748b;
+  color: var(--ink-3);
   max-width: 320px;
 }
 
@@ -433,7 +433,7 @@
 }
 
 .equipment-modal-card {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, var(--surface-2), var(--base));
   border: 1px solid rgba(144, 224, 239, 0.2);
   border-radius: 24px;
   padding: 32px;
@@ -448,7 +448,7 @@
 .equipment-modal-card h3 {
   margin: 0 0 24px 0;
   font-size: 22px;
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 .equipment-form-group {
@@ -468,7 +468,7 @@
 .equipment-form-group label {
   font-size: 11px;
   text-transform: uppercase;
-  color: #90e0ef;
+  color: var(--accent);
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -479,7 +479,7 @@
   padding: 10px 12px;
   background: rgba(2, 6, 17, 0.6);
   border: 1px solid rgba(144, 224, 239, 0.15);
-  color: #caf0f8;
+  color: var(--ink);
   border-radius: 10px;
   outline: none;
   font-size: 14px;
@@ -489,8 +489,8 @@
 .equipment-form-group input:focus,
 .equipment-form-group select:focus,
 .equipment-form-group textarea:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.1);
 }
 
 .equipment-form-group textarea {
@@ -510,7 +510,7 @@
 .equipment-btn-secondary {
   background: rgba(71, 85, 105, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
+  color: var(--ink-3);
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 10px;
@@ -521,12 +521,12 @@
 
 .equipment-btn-secondary:hover {
   background: rgba(71, 85, 105, 0.5);
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .equipment-btn-primary {
-  background: linear-gradient(135deg, #38bdf8, #0284c7);
-  color: #0f172a;
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+  color: var(--base);
   border: none;
   border-radius: 10px;
   padding: 10px 24px;
@@ -539,7 +539,7 @@
 .equipment-btn-primary:hover {
   transform: translateY(-1px);
   filter: brightness(1.05);
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
 }
 
 .equipment-loading {
@@ -550,7 +550,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  background-color: #020617;
+  background-color: var(--base);
 }
 
 .equipment-spinner {
@@ -558,7 +558,7 @@
   height: 40px;
   border: 3px solid rgba(144, 224, 239, 0.1);
   border-radius: 50%;
-  border-top-color: #90e0ef;
+  border-top-color: var(--accent);
   animation: equipSpin 1s linear infinite;
 }
 
@@ -606,8 +606,8 @@
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: var(--page-padding);
-  color: #caf0f8;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  font-family: var(--font-text);
   box-sizing: border-box;
   position: relative;
 }

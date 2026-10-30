@@ -8,9 +8,11 @@ import {
   adminToggleEnabled, adminDeleteUser
 } from "../api/diveApi"
 import "./AdminPage.css"
+import { useConfirm } from "../context/ConfirmContext"
 
 export default function AdminPage() {
   const navigate = useNavigate()
+  const confirm = useConfirm()
   const [users, setUsers] = useState([])
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -53,7 +55,8 @@ export default function AdminPage() {
   }
 
   async function handleDeleteUser(id, email) {
-    if (!window.confirm(`Delete user "${email}"? This cannot be undone.`)) return
+    const ok = await confirm({ title: "Delete user?", message: `Delete user "${email}"? This cannot be undone.`, confirmText: "Delete", danger: true })
+    if (!ok) return
     try {
       await adminDeleteUser(id)
       setUsers(prev => prev.filter(u => u.id !== id))

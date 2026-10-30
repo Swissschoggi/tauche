@@ -2,7 +2,7 @@
   min-height: 100vh;
   min-height: 100dvh;
   padding: var(--page-padding);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-text);
 }
 
 .settings-container {
@@ -15,13 +15,13 @@
 
 .settings-header h2 {
   font-size: 26px;
-  color: #f8fafc;
+  color: var(--ink);
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .settings-header p {
-  color: #94a3b8;
+  color: var(--ink-3);
   font-size: 14px;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .settings-card h3 svg, .sidebar-node h4 svg {
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 .setting-row {
@@ -73,19 +73,19 @@
 .setting-info label {
   font-size: 14px;
   font-weight: 600;
-  color: #caf0f8;
+  color: var(--ink);
 }
 
 .setting-info span {
   font-size: 11.5px;
-  color: #94a3b8;
+  color: var(--ink-3);
 }
 
 .toggle-switch {
   appearance: none;
   width: 42px;
   height: 22px;
-  background: #334155;
+  background: var(--line-2);
   border-radius: 50px;
   position: relative;
   cursor: pointer;
@@ -93,7 +93,7 @@
 }
 
 .toggle-switch:checked {
-  background: #38bdf8;
+  background: var(--accent);
 }
 
 .toggle-switch::before {
@@ -102,7 +102,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #0f172a;
+  background: var(--base);
   top: 3px;
   left: 3px;
   transition: transform 0.2s ease;
@@ -117,8 +117,8 @@
   width: 100%;
   padding: 12px;
   border-radius: 10px;
-  background: #38bdf8;
-  color: #0f172a;
+  background: var(--accent);
+  color: var(--base);
   border: none;
   font-weight: 700;
   font-size: 13.5px;
@@ -144,12 +144,12 @@
 
 .sidebar-node p {
   font-size: 12.5px;
-  color: #94a3b8;
+  color: var(--ink-3);
   line-height: 1.6;
 }
 
 .node-email {
-  color: #38bdf8 !important;
+  color: var(--accent) !important;
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -157,8 +157,8 @@
 .node-tag {
   display: inline-block;
   font-size: 10px;
-  background: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
+  background: rgba(34, 211, 238, 0.1);
+  color: var(--accent);
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
@@ -185,8 +185,8 @@
 }
 
 .status-indicator.checking {
-  background: #e2e8f0;
-  box-shadow: 0 0 8px #e2e8f0;
+  background: var(--ink);
+  box-shadow: 0 0 8px var(--ink);
   animation: pulse 1.5s infinite ease-in-out;
 }
 

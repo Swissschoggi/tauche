@@ -3,8 +3,8 @@
   min-height: 100dvh;
   padding: var(--page-padding);
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #f8fafc;
+  font-family: var(--font-text);
+  color: var(--ink);
 }
 
 .wallet-header-controls {
@@ -31,7 +31,7 @@
 .print-btn {
   background: rgba(30, 41, 59, 0.7) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #e2e8f0 !important;
+  color: var(--ink) !important;
 }
 
 .print-btn:hover {
@@ -40,8 +40,8 @@
 }
 
 .add-cert-card-btn {
-  background: linear-gradient(135deg, #90e0ef, #0077b6);
-  color: #020617;
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+  color: var(--base);
   border: none;
   border-radius: 12px;
   padding: 10px 20px;
@@ -94,7 +94,7 @@
   height: 48px;
   border-radius: 50%;
   background: rgba(144, 224, 239, 0.1);
-  color: #90e0ef;
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,12 +103,12 @@
 
 .diver-profile-summary-card h4 {
   margin: 0 0 4px 0;
-  color: #f8fafc;
+  color: var(--ink);
   font-size: 18px;
 }
 
 .diver-email {
-  color: #64748b;
+  color: var(--ink-3);
   font-size: 13px;
   margin: 0 0 20px 0;
 }
@@ -122,12 +122,12 @@
 }
 
 .sidebar-telemetry-badge span {
-  color: #94a3b8;
+  color: var(--ink-3);
   font-size: 13px;
 }
 
 .sidebar-telemetry-badge strong {
-  color: #90e0ef;
+  color: var(--accent);
   font-size: 18px;
 }
 
@@ -138,7 +138,7 @@
 }
 
 .wallet-cards-main-view h3 {
-  color: #f8fafc;
+  color: var(--ink);
   font-size: 20px;
   margin: 0 0 24px 0;
 }
@@ -148,7 +148,7 @@
   border-radius: 20px;
   padding: 48px 24px;
   text-align: center;
-  color: #64748b;
+  color: var(--ink-3);
   box-sizing: border-box;
 }
 
@@ -164,7 +164,7 @@
   position: relative;
   min-height: 190px;
   height: auto;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, var(--surface-2), var(--base));
   border: 1px solid rgba(144, 224, 239, 0.15);
   border-radius: 16px;
   padding: 24px;
@@ -198,7 +198,7 @@
 .agency-badge {
   background: rgba(144, 224, 239, 0.1);
   border: 1px solid rgba(144, 224, 239, 0.2);
-  color: #90e0ef;
+  color: var(--accent);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 11px;
@@ -211,7 +211,7 @@
 .delete-card-action {
   background: transparent;
   border: none;
-  color: #475569;
+  color: var(--ink-3);
   cursor: pointer;
   padding: 6px;
   border-radius: 8px;
@@ -237,7 +237,7 @@
 
 .c-card-middle h4 {
   margin: 0;
-  color: #f8fafc;
+  color: var(--ink);
   font-size: 18px;
   font-weight: 600;
   line-height: 1.3;
@@ -259,7 +259,7 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--ink-3);
 }
 
 .ID-field span {
@@ -283,7 +283,7 @@
 }
 
 .wallet-modal-content {
-  background: #0f172a;
+  background: var(--base);
   border: 1px solid rgba(144, 224, 239, 0.15);
   border-radius: 24px;
   padding: 32px;
@@ -295,7 +295,7 @@
 
 .wallet-modal-content h3 {
   margin: 0 0 24px 0;
-  color: #f8fafc;
+  color: var(--ink);
 }
 
 .form-element {
@@ -308,7 +308,7 @@
 .form-element label {
   font-size: 12px;
   text-transform: uppercase;
-  color: #90e0ef;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -316,7 +316,7 @@
   padding: 12px;
   background: rgba(2, 6, 17, 0.4);
   border: 1px solid rgba(144, 224, 239, 0.15);
-  color: #caf0f8;
+  color: var(--ink);
   border-radius: 12px;
   outline: none;
 }
@@ -331,13 +331,13 @@
 .modal-cancel-btn {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: var(--ink-3);
   cursor: pointer;
   padding: 8px 16px;
 }
 
 .modal-submit-btn {
-  background: #0077b6;
+  background: var(--accent);
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -354,7 +354,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  background-color: #020617;
+  background-color: var(--base);
 }
 
 .cert-loading-container .spinner {
@@ -362,7 +362,7 @@
   height: 40px;
   border: 3px solid rgba(144, 224, 239, 0.1);
   border-radius: 50%;
-  border-top-color: #90e0ef;
+  border-top-color: var(--accent);
   animation: walletSpin 1s linear infinite;
 }
 

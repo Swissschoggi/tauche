@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useNavigate, useLocation, Link } from "react-router-dom"
 import { loginUser } from "../api/diveApi"
+import { Waves } from "lucide-react"
 import "./LoginPage.css"
 
 export default function LoginPage() {
@@ -20,15 +21,13 @@ export default function LoginPage() {
     e.preventDefault()
     setError("")
     setIsLoading(true)
-
     try {
       const res = await loginUser(credentials.email, credentials.password)
       localStorage.setItem("user_session_token", res.data.token)
-      
       const originPath = location.state?.from?.pathname || "/"
       navigate(originPath, { replace: true })
     } catch (err) {
-      const serverMessage = err.response?.data?.message || "Wrong creds bro."
+      const serverMessage = err.response?.data?.message || "Email or password is incorrect."
       setError(serverMessage)
     } finally {
       setIsLoading(false)
@@ -36,56 +35,49 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="login-page-wrapper">
-      <div className="login-ambient-glow"></div>
-      <div className="login-card">
-        <div className="login-header">
-          <div className="login-logo">🤿</div>
-          <h2>Tauche Logbook</h2>
-          <p>Sign in to access your decentralized dive logs</p>
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-header">
+          <div className="auth-mark"><Waves size={22} strokeWidth={2} /></div>
+          <h1 className="auth-title">Tauche</h1>
+          <p className="auth-subtitle">Sign in to your dive logbook</p>
         </div>
 
-        {error && <div className="login-error-banner">{error}</div>}
+        {error && (
+          <div className="auth-error" role="alert">
+            <span>{error}</span>
+          </div>
+        )}
 
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="input-group">
-            <label htmlFor="email">Diver Email</label>
+        <form onSubmit={handleSubmit} noValidate className="auth-form">
+          <div className="field">
+            <label className="field__label" htmlFor="email">Email</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={credentials.email}
-              onChange={handleChange}
-              placeholder="diver@ocean.com"
-              disabled={isLoading}
-              required
+              id="email" name="email" type="email" inputMode="email"
+              autoComplete="email" value={credentials.email}
+              onChange={handleChange} placeholder="diver@ocean.com"
+              disabled={isLoading} required aria-invalid={!!error}
             />
           </div>
 
-          <div className="input-group">
-            <label htmlFor="password">Security Password</label>
+          <div className="field">
+            <label className="field__label" htmlFor="password">Password</label>
             <input
-              type="password"
-              id="password"
-              name="password"
-              value={credentials.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              disabled={isLoading}
-              required
+              id="password" name="password" type="password"
+              autoComplete="current-password" value={credentials.password}
+              onChange={handleChange} placeholder="••••••••"
+              disabled={isLoading} required
             />
           </div>
 
-          <button type="submit" className="login-submit-btn" disabled={isLoading}>
-            {isLoading ? "Validating Session..." : "Secure Access →"}
+          <button type="submit" className="btn btn--primary btn--lg" disabled={isLoading} aria-busy={isLoading}>
+            {isLoading ? "Signing in…" : "Sign in"}
           </button>
         </form>
 
-        <div className="auth-switch-link">
-          <span style={{ color: "var(--muted)" }}>New to Tauche Logbook? </span>
-          <Link to="/register" style={{ color: "#38bdf8", textDecoration: "none", fontWeight: "600" }}>
-            Create an account
-          </Link>
+        <div className="auth-switch">
+          <span className="text-muted">New to Tauche? </span>
+          <Link to="/register">Create an account</Link>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ export default function DiveProfileChart({ maxDepth, durationMinutes }) {
             </linearGradient>
           </defs>
           <path d={`M ${points} L 500,160 L 0,160 Z`} fill="url(#grad)" />
-          <polyline points={points} fill="none" stroke="#90e0ef" strokeWidth="2" />
+          <polyline points={points} fill="none" stroke="var(--accent)" strokeWidth="2" />
         </svg>
       </div>
     </div>

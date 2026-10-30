@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useToast } from "../context/ToastContext"
+import { useConfirm } from "../context/ConfirmContext"
 import { getAllDives, getEquipmentCloset } from '../api/diveApi'
 import JSZip from 'jszip'
 import {
@@ -7,7 +9,7 @@ import {
   Clock, Thermometer, Waves, Users, Edit2, Trash2,
   Search, ArrowDown, Camera, Wind, Save, FileText,
   CheckCircle2, AlertCircle, DollarSign, Cloud,
-  RefreshCw, BarChart3, Globe, Target, TrendingUp
+  RefreshCw, BarChart3, Globe, Target, TrendingUp, Download
 } from 'lucide-react'
 import './TripsPage.css'
 
@@ -39,7 +41,7 @@ const EMPTY_TRIP = {
   endDate: '',
   notes: '',
   diveLogIds: [],
-  coverColor: '#0077b6',
+  coverColor: 'var(--accent)',
   status: 'planning',
   diveBuddies: [],
   gearPacked: [],
@@ -80,13 +82,15 @@ function generateItineraryDays(startDate, endDate) {
 }
 
 const COLOR_PALETTE = [
-  '#0077b6', '#023e8a', '#48cae4', '#00b4d8',
+  'var(--accent)', '#023e8a', '#48cae4', '#00b4d8',
   '#2d6a4f', '#40916c', '#7f4f24', '#9c6644',
   '#7b2d8b', '#c9184a', '#e85d04', '#f48c06',
 ]
 
 export default function TripsPage() {
   const navigate = useNavigate()
+  const toast = useToast()
+  const confirm = useConfirm()
   const [trips, setTrips] = useState(loadTrips)
   const [allDives, setAllDives] = useState([])
   const [allEquipment, setAllEquipment] = useState([])
@@ -160,9 +164,10 @@ export default function TripsPage() {
     setView('detail')
   }
 
-  const handleDelete = (tripId, e) => {
+  const handleDelete = async (tripId, e) => {
     e?.stopPropagation()
-    if (!window.confirm('Delete this trip?')) return
+    const ok = await confirm({ title: 'Delete trip?', message: 'Delete this trip? This cannot be undone.', confirmText: 'Delete', danger: true })
+    if (!ok) return
     setTrips(prev => prev.filter(t => t.id !== tripId))
     if (selectedTrip?.id === tripId) setView('list')
   }
@@ -410,7 +415,7 @@ export default function TripsPage() {
                             setShowSuggestions(false)
                           }}
                         >
-                          <MapPin size={12} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                          <MapPin size={12} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                           <span>{s.display_name}</span>
                         </div>
                       ))}
@@ -860,7 +865,7 @@ export default function TripsPage() {
               </div>
               {maxDepth && (
                 <div className="trips-stat-box">
-                  <span className="trips-stat-val" style={{ color: '#38bdf8' }}>{maxDepth}m</span>
+                  <span className="trips-stat-val" style={{ color: 'var(--accent)' }}>{maxDepth}m</span>
                   <span className="trips-stat-lbl">Max Depth</span>
                 </div>
               )}
@@ -892,7 +897,7 @@ export default function TripsPage() {
           {trip.diveBuddies && trip.diveBuddies.length > 0 && (
             <div className="trips-detail-section">
               <h3 className="trips-section-title">
-                <Users size={16} style={{ color: '#38bdf8' }} /> Dive Buddies
+                <Users size={16} style={{ color: 'var(--accent)' }} /> Dive Buddies
               </h3>
               <div className="trips-buddies-detail">
                 {trip.diveBuddies.map(buddy => (
@@ -1045,7 +1050,7 @@ export default function TripsPage() {
           {trip.status !== 'planning' && (
             <div className="trips-detail-section">
               <h3 className="trips-section-title">
-                <Anchor size={16} style={{ color: '#38bdf8' }} /> Dive Logs
+                <Anchor size={16} style={{ color: 'var(--accent)' }} /> Dive Logs
               </h3>
               {dives.length === 0 ? (
                 <div className="trips-empty-section">
@@ -1070,7 +1075,7 @@ export default function TripsPage() {
                           </div>
                         </div>
                       </div>
-                      <ChevronRight size={16} style={{ color: '#475569' }} />
+                      <ChevronRight size={16} style={{ color: 'var(--ink-3)' }} />
                     </div>
                   ))}
                 </div>
@@ -1082,7 +1087,7 @@ export default function TripsPage() {
           {trip.notes && (
             <div className="trips-detail-section">
               <h3 className="trips-section-title">
-                <FileText size={16} style={{ color: '#38bdf8' }} /> Notes
+                <FileText size={16} style={{ color: 'var(--accent)' }} /> Notes
               </h3>
               <div className="trips-notes-body">{trip.notes}</div>
             </div>
@@ -1139,7 +1144,7 @@ export default function TripsPage() {
                   <span className="trips-dashboard-stat-val">{active.length}</span>
                 </div>
                 <div className="trips-dashboard-stat">
-                  <span className="trips-dashboard-stat-lbl" style={{ color: '#38bdf8' }}>Completed</span>
+                  <span className="trips-dashboard-stat-lbl" style={{ color: 'var(--accent)' }}>Completed</span>
                   <span className="trips-dashboard-stat-val">{completed.length}</span>
                 </div>
               </div>
@@ -1215,7 +1220,7 @@ export default function TripsPage() {
         <div className="trips-list-header">
           <div>
             <h2 className="trips-list-title">
-              <Anchor size={24} style={{ color: '#38bdf8' }} /> My Trips
+              <Anchor size={24} style={{ color: 'var(--accent)' }} /> My Trips
             </h2>
             <p className="trips-list-subtitle">Plan and track your dive expeditions</p>
           </div>
@@ -1240,7 +1245,7 @@ export default function TripsPage() {
         </div>
 
         <div className="trips-search-bar">
-          <Search size={15} style={{ color: '#64748b', flexShrink: 0 }} />
+          <Search size={15} style={{ color: 'var(--ink-3)', flexShrink: 0 }} />
           <input
             type="text"
             placeholder="Search trips..."
@@ -1256,13 +1261,13 @@ export default function TripsPage() {
         )}
         {importing && (
           <div className="trips-search-bar" style={{ justifyContent: 'center', maxWidth: '640px', margin: '0 auto 16px' }}>
-            <p style={{ color: '#94a3b8', fontSize: '13px', margin: 0 }}>Importing trip…</p>
+            <p style={{ color: 'var(--ink-3)', fontSize: '13px', margin: 0 }}>Importing trip…</p>
           </div>
         )}
 
         {trips.length === 0 ? (
           <div className="trips-empty-state">
-            <Anchor size={48} strokeWidth={1} style={{ color: '#334155', marginBottom: '16px' }} />
+            <Anchor size={48} strokeWidth={1} style={{ color: 'var(--line-2)', marginBottom: '16px' }} />
             <p>No trips yet</p>
             <small>Create your first trip to organize dives by expedition</small>
             <div style={{ display: 'flex', gap: '10px', marginTop: '20px', justifyContent: 'center' }}>
@@ -1270,13 +1275,13 @@ export default function TripsPage() {
                 <Plus size={15} /> Plan First Trip
               </button>
               <button className="trips-btn-secondary" onClick={() => fileInputRef.current?.click()}>
-                📥 Import from Surmai
+                <Download size={14} /> Import from Surmai
               </button>
             </div>
           </div>
         ) : filteredTrips.length === 0 ? (
           <div className="trips-empty-state">
-            <Search size={32} strokeWidth={1} style={{ color: '#334155', marginBottom: '12px' }} />
+            <Search size={32} strokeWidth={1} style={{ color: 'var(--line-2)', marginBottom: '12px' }} />
             <p>No trips match "{searchTerm}"</p>
           </div>
         ) : (

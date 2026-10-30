@@ -242,7 +242,7 @@ export default function SharedDivePage() {
                   <CircleMarker 
                     center={[dive.latitude, dive.longitude]} 
                     radius={10}
-                    pathOptions={{ color: '#38bdf8', fillColor: '#38bdf8', fillOpacity: 0.4, weight: 2 }}
+                    pathOptions={{ color: 'var(--accent)', fillColor: 'var(--accent)', fillOpacity: 0.4, weight: 2 }}
                   >
                     <Popup className="shared-popup-styling">
                       <strong>{dive.diveSite || "Dive Site Location"}</strong>

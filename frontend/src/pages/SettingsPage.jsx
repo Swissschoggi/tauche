@@ -62,7 +62,7 @@ export default function SettingsPage() {
               <div className="setting-info">
                 <label>Unit System</label>
                 <span>
-                  Currently using: <strong style={{ color: "#38bdf8" }}>
+                  Currently using: <strong style={{ color: "var(--accent)" }}>
                     {metricSystem ? "Metric (m, °C, bar, kg)" : "Imperial (ft, °F, psi, lbs)"}
                   </strong>
                 </span>
@@ -96,7 +96,7 @@ export default function SettingsPage() {
                 </span>
               </div>
               {backendStatus === "online" && (
-                <p style={{ fontSize: "12px", color: "#94a3b8" }}>
+                <p style={{ fontSize: "12px", color: "var(--ink-3)" }}>
                   Latency Response:{" "}
                   <span style={{ color: "#34d399", fontWeight: "600" }}>{latency}ms</span>
                 </p>

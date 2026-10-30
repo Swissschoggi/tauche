@@ -1,8 +1,10 @@
 // components/StoryExporter.jsx
 import { useState } from 'react'
 import { Download, Share2, Camera, X } from 'lucide-react'
+import { useToast } from "../context/ToastContext"
 
 export default function StoryExporter({ dive, onClose }) {
+  const toast = useToast()
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedImage, setGeneratedImage] = useState(null)
 
@@ -17,7 +19,7 @@ export default function StoryExporter({ dive, onClose }) {
     
     // Background gradient (ocean theme)
     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height)
-    gradient.addColorStop(0, '#0f172a')
+    gradient.addColorStop(0, 'var(--base)')
     gradient.addColorStop(0.5, '#1e3a8a')
     gradient.addColorStop(1, '#020617')
     ctx.fillStyle = gradient
@@ -48,10 +50,10 @@ export default function StoryExporter({ dive, onClose }) {
     
     // Depth - big number
     ctx.font = 'bold 140px "Inter", system-ui'
-    ctx.fillStyle = '#38bdf8'
+    ctx.fillStyle = 'var(--accent)'
     ctx.fillText(`${dive.depthMeters || '?'}m`, canvas.width / 2, 550)
     ctx.font = '40px "Inter", system-ui'
-    ctx.fillStyle = '#94a3b8'
+    ctx.fillStyle = 'var(--ink-3)'
     ctx.fillText('MAX DEPTH', canvas.width / 2, 650)
     
     // Duration
@@ -62,7 +64,7 @@ export default function StoryExporter({ dive, onClose }) {
     ctx.fillStyle = '#34d399'
     ctx.fillText('min', canvas.width / 2 + 30, 840)
     ctx.font = '40px "Inter", system-ui'
-    ctx.fillStyle = '#94a3b8'
+    ctx.fillStyle = 'var(--ink-3)'
     ctx.fillText('BOTTOM TIME', canvas.width / 2, 930)
     
     // Location
@@ -73,22 +75,22 @@ export default function StoryExporter({ dive, onClose }) {
     
     // Date
     ctx.font = '28px "Inter", system-ui'
-    ctx.fillStyle = '#64748b'
+    ctx.fillStyle = 'var(--ink-3)'
     ctx.fillText(dive.date || new Date().toISOString().split('T')[0], canvas.width / 2, 1280)
     
     // Buddy if exists
     if (dive.buddy) {
       ctx.font = '28px "Inter", system-ui'
-      ctx.fillStyle = '#94a3b8'
+      ctx.fillStyle = 'var(--ink-3)'
       ctx.fillText(`🤝 With ${dive.buddy}`, canvas.width / 2, 1420)
     }
     
     // Bottom branding
     ctx.font = '20px "Inter", system-ui'
-    ctx.fillStyle = '#38bdf8'
+    ctx.fillStyle = 'var(--accent)'
     ctx.fillText('TAUCHE', canvas.width / 2, canvas.height - 80)
     ctx.font = '16px "Inter", system-ui'
-    ctx.fillStyle = '#475569'
+    ctx.fillStyle = 'var(--ink-3)'
     ctx.fillText('dive logbook', canvas.width / 2, canvas.height - 50)
     
     // Add dive image if exists (circular)
@@ -109,7 +111,7 @@ export default function StoryExporter({ dive, onClose }) {
             // Border
             ctx.beginPath()
             ctx.arc(canvas.width / 2, 1650, 100, 0, Math.PI * 2)
-            ctx.strokeStyle = '#38bdf8'
+            ctx.strokeStyle = 'var(--accent)'
             ctx.lineWidth = 4
             ctx.stroke()
             resolve()
@@ -141,7 +143,7 @@ export default function StoryExporter({ dive, onClose }) {
     // Instagram doesn't directly accept file sharing, so we download
     // User can then post to Instagram Stories
     downloadImage()
-    alert('Image saved! You can now post to Instagram Stories.')
+    toast.success('Image saved! You can now post to Instagram Stories.')
   }
   
   return (
@@ -191,7 +193,7 @@ export default function StoryExporter({ dive, onClose }) {
                 background: 'rgba(56, 189, 248, 0.15)',
                 border: '1px solid rgba(56, 189, 248, 0.3)',
                 borderRadius: '10px',
-                color: '#38bdf8',
+                color: 'var(--accent)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
@@ -227,7 +229,7 @@ export default function StoryExporter({ dive, onClose }) {
       
       <p style={{ 
         fontSize: '12px', 
-        color: '#64748b', 
+        color: 'var(--ink-3)', 
         marginTop: '20px', 
         textAlign: 'center',
         paddingTop: '16px',

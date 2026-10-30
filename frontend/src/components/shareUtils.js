@@ -19,11 +19,12 @@ const copyToClipboardFallback = (text) => {
   document.body.removeChild(textarea)
 }
 
-export const shareDive = async (dive) => {
+export const shareDive = async (dive, toast) => {
   console.log('Share button clicked for dive:', dive)
   
   if (!dive || !dive.id) {
-    alert('Please save the dive first before sharing')
+    if (toast) toast.error('Please save the dive first before sharing')
+    else alert('Please save the dive first before sharing')
     return
   }
   
@@ -58,10 +59,12 @@ export const shareDive = async (dive) => {
     } else {
       copyToClipboardFallback(fullMessage)
     }
-    alert('Share link copied to clipboard!\n\n' + shareUrl)
+    if (toast) toast.success('Share link copied to clipboard!')
+    else alert('Share link copied to clipboard!\n\n' + shareUrl)
     
   } catch (err) {
     console.error('Shared operation layout processing failed:', err)
-    alert(err.message || 'Failed to create share link')
+    if (toast) toast.error(err.message || 'Failed to create share link')
+    else alert(err.message || 'Failed to create share link')
   }
 }

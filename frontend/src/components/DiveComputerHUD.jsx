@@ -7,7 +7,7 @@ const SEGMENT_STYLE = {
   textShadow: "0 0 8px rgba(56, 189, 248, 0.4)",
 }
 
-function SegDisplay({ value, unit, label, color = "#38bdf8", size = "md" }) {
+function SegDisplay({ value, unit, label, color = "var(--accent)", size = "md" }) {
   const fontSize = size === "lg" ? 36 : size === "sm" ? 13 : 18
   return (
     <div style={{ textAlign: "center" }}>
@@ -73,7 +73,7 @@ export default function DiveComputerHUD({ dives }) {
               value={stats.lastDive?.depthMeters || stats.maxDepth}
               unit="m"
               label="Current Depth"
-              color="#38bdf8"
+              color="var(--accent)"
               size="lg"
             />
           </div>
@@ -121,7 +121,7 @@ export default function DiveComputerHUD({ dives }) {
               value={stats.maxDepth}
               unit="m"
               label="Max Depth"
-              color="#38bdf8"
+              color="var(--accent)"
               size="sm"
             />
           </div>

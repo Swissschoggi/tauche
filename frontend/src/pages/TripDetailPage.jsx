@@ -9,10 +9,12 @@ import {
   updateTrip
 } from '../api/diveApi'
 import './TripDetailPage.css'
+import { useToast } from "../context/ToastContext"
 
 export default function TripDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const toast = useToast()
   const [trip, setTrip] = useState(null)
   const [availableDives, setAvailableDives] = useState([])
   const [loading, setLoading] = useState(true)
@@ -55,7 +57,7 @@ export default function TripDetailPage() {
       await loadData()
     } catch (err) {
       console.error('Failed to bind dive track:', err)
-      alert('Could not attach dive. Verify server permissions.')
+      toast.error('Could not attach dive. Verify server permissions.')
     }
   }
 
@@ -71,7 +73,7 @@ export default function TripDetailPage() {
 
   async function handleSave() {
     if (!formData.tripName || !formData.destination) {
-      alert('Trip name and destination cannot be empty!')
+      toast.error('Trip name and destination cannot be empty!')
       return
     }
     try {
@@ -80,7 +82,7 @@ export default function TripDetailPage() {
       await loadData()
     } catch (err) {
       console.error('Failed to push inline modifications:', err)
-      alert('Update failed. Ensure token credentials are still valid.')
+      toast.error('Update failed. Ensure token credentials are still valid.')
     }
   }
 

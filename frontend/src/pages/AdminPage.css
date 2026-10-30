@@ -22,10 +22,10 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.6rem 1.2rem;
-  border: 1px solid var(--border, #334155);
+  border: 1px solid var(--border, var(--line-2));
   border-radius: 8px;
-  background: var(--card-bg, #1e293b);
-  color: var(--text, #e2e8f0);
+  background: var(--card-bg, var(--surface-2));
+  color: var(--text, var(--ink));
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -37,7 +37,7 @@
 }
 
 .admin-tabs button:hover:not(.active) {
-  background: var(--hover-bg, #334155);
+  background: var(--hover-bg, var(--line-2));
 }
 
 .admin-users-header {
@@ -62,11 +62,11 @@
 .admin-users-table td {
   text-align: left;
   padding: 0.6rem 0.8rem;
-  border-bottom: 1px solid var(--border, #334155);
+  border-bottom: 1px solid var(--border, var(--line-2));
 }
 
 .admin-users-table th {
-  color: var(--text-muted, #94a3b8);
+  color: var(--text-muted, var(--ink-3));
   font-weight: 600;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -74,13 +74,13 @@
 }
 
 .admin-users-table tbody tr:hover {
-  background: var(--hover-bg, #1e293b);
+  background: var(--hover-bg, var(--surface-2));
 }
 
 .role-select {
-  background: var(--card-bg, #1e293b);
-  color: var(--text, #e2e8f0);
-  border: 1px solid var(--border, #334155);
+  background: var(--card-bg, var(--surface-2));
+  color: var(--text, var(--ink));
+  border: 1px solid var(--border, var(--line-2));
   border-radius: 4px;
   padding: 0.25rem 0.5rem;
   font-size: 0.85rem;
@@ -115,16 +115,16 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--border, #334155);
+  border: 1px solid var(--border, var(--line-2));
   border-radius: 6px;
-  background: var(--card-bg, #1e293b);
-  color: var(--text, #e2e8f0);
+  background: var(--card-bg, var(--surface-2));
+  color: var(--text, var(--ink));
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .btn-icon:hover {
-  background: var(--hover-bg, #334155);
+  background: var(--hover-bg, var(--line-2));
 }
 
 .btn-danger-icon:hover {
@@ -145,9 +145,9 @@
   align-items: center;
   gap: 0.4rem;
   padding: 1.5rem;
-  border: 1px solid var(--border, #334155);
+  border: 1px solid var(--border, var(--line-2));
   border-radius: 12px;
-  background: var(--card-bg, #1e293b);
+  background: var(--card-bg, var(--surface-2));
 }
 
 .stat-card .stat-value {
@@ -157,5 +157,5 @@
 
 .stat-card .stat-label {
   font-size: 0.85rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--text-muted, var(--ink-3));
 }

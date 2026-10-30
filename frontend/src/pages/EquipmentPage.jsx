@@ -3,11 +3,18 @@ import { useNavigate } from "react-router-dom"
 import { getEquipmentCloset, addEquipmentItem, removeEquipmentItem, updateEquipmentItem } from "../api/diveApi"
 import { ShieldAlert, CheckCircle, Settings, Plus, Trash2, Calendar, HardDrive, Edit, Save, X, Wrench, DollarSign, Hash, AlertTriangle } from "lucide-react"
 import "./EquipmentPage.css"
+import { useToast } from "../context/ToastContext"
+import EmptyState from "../components/EmptyState"
+import ErrorState from "../components/ErrorState"
+import { useConfirm } from "../context/ConfirmContext"
 
 export default function EquipmentPage() {
   const navigate = useNavigate()
+  const toast = useToast()
+  const confirm = useConfirm()
   const [gear, setGear] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [showAddModal, setShowAddModal] = useState(false)
   const [editingItem, setEditingItem] = useState(null)
   const [newItem, setNewItem] = useState({
@@ -18,11 +25,14 @@ export default function EquipmentPage() {
   })
 
   async function loadCloset() {
+    setLoading(true)
+    setError(null)
     try {
       const res = await getEquipmentCloset()
       setGear(Array.isArray(res) ? res : [])
     } catch (err) {
       console.error("Failed fetching equipment profiles: ", err)
+      setError(err)
     } finally {
       setLoading(false)
     }
@@ -64,7 +74,7 @@ export default function EquipmentPage() {
       })
       loadCloset()
     } catch (err) {
-      alert("Error logging equipment item.")
+      toast.error("Error logging equipment item.")
     }
   }
 
@@ -77,17 +87,18 @@ export default function EquipmentPage() {
       setEditingItem(null)
       loadCloset()
     } catch (err) {
-      alert("Error updating equipment item.")
+      toast.error("Error updating equipment item.")
     }
   }
 
   async function handleDelete(id) {
-    if (!window.confirm("Retire this gear item from active use track?")) return
+    const ok = await confirm({ title: "Retire gear?", message: "Retire this gear item from active use track?", confirmText: "Retire", danger: true })
+    if (!ok) return
     try {
       await removeEquipmentItem(id)
       loadCloset()
     } catch (err) {
-      alert("Error removing item.")
+      toast.error("Error removing item.")
     }
   }
 
@@ -105,9 +116,18 @@ export default function EquipmentPage() {
 
   if (loading) {
     return (
-      <div className="equipment-loading">
-        <div className="equipment-spinner" />
-        <p>Inspecting inventory tolerances...</p>
+      <div className="equipment-page">
+        <div className="equipment-loading">
+          <div className="equipment-spinner" />
+          <p>Loading gear…</p>
+        </div>
+      </div>
+    )
+  }
+  if (error) {
+    return (
+      <div className="equipment-page">
+        <ErrorState title="Couldn't load your gear" body="Check your connection and try again." onRetry={loadCloset} />
       </div>
     )
   }
@@ -128,10 +148,12 @@ export default function EquipmentPage() {
         </div>
 
         {gear.length === 0 ? (
-          <div className="empty-equipment-state">
-            <HardDrive size={32} />
-            <p>No logged gear found. Register your equipment to monitor safe usage parameters.</p>
-          </div>
+          <EmptyState
+            icon={HardDrive}
+            title="No gear registered"
+            body="Register your equipment to monitor service intervals and safe usage."
+            actions={<button className="btn btn--primary" onClick={() => setShowAddModal(true)}>Add gear</button>}
+          />
         ) : (
           <div className="equipment-cards-layout">
             {gear.map((item) => {
@@ -147,7 +169,7 @@ export default function EquipmentPage() {
               let statusIcon = <CheckCircle size={14} />
 
               if (noService) {
-                statusColor = "#64748b"
+                statusColor = "var(--ink-3)"
                 statusLabel = "No Service History"
                 statusIcon = <Settings size={14} />
               } else if (item.requiresService) {
@@ -166,7 +188,7 @@ export default function EquipmentPage() {
                     <form onSubmit={handleUpdate}>
                       <div className="equipment-badge-header">
                         <span className="equipment-category-tag">
-                          <select value={editingItem.category} onChange={(e) => updateEditingField("category", e.target.value)} style={{ background: "transparent", color: "#90e0ef", border: "1px solid rgba(144,224,239,0.3)" }}>
+                          <select value={editingItem.category} onChange={(e) => updateEditingField("category", e.target.value)} style={{ background: "transparent", color: "var(--accent)", border: "1px solid rgba(144,224,239,0.3)" }}>
                             <option value="Regulator">Regulator Set</option>
                             <option value="BCD">BCD</option>
                             <option value="Computer">Dive Computer</option>

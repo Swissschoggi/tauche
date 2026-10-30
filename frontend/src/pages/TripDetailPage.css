@@ -36,7 +36,7 @@
   flex: 1;
   padding: 10px 12px;
   background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 8px;
   color: var(--text);
   font-size: 16px;
@@ -51,7 +51,7 @@
 
 .overview-card {
   background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 10px;
   padding: 16px;
   text-align: center;
@@ -75,7 +75,7 @@
 
 .dives-section {
   background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 12px;
   padding: 20px;
   backdrop-filter: blur(10px);
@@ -147,7 +147,7 @@
   width: 32px;
   height: 32px;
   background: var(--accent);
-  color: #0f172a;
+  color: var(--base);
   border-radius: 50%;
   font-weight: 600;
   font-size: 14px;
@@ -246,7 +246,7 @@
 
 .trip-form-container {
   background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 24px;
@@ -279,7 +279,7 @@
   width: 100%;
   padding: 10px 12px;
   background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 8px;
   color: var(--text);
   font-family: inherit;
@@ -289,7 +289,7 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(34, 211, 238, 0.5);
   background: rgba(15, 23, 42, 0.95);
 }
 
@@ -321,7 +321,7 @@
 
 .trip-card {
   background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 12px;
   padding: 16px;
   backdrop-filter: blur(10px);
@@ -332,7 +332,7 @@
 }
 
 .trip-card:hover {
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(34, 211, 238, 0.5);
   transform: translateY(-2px);
 }
 
@@ -383,8 +383,8 @@
   gap: 12px;
   margin-bottom: 12px;
   padding: 12px 0;
-  border-top: 1px solid rgba(56, 189, 248, 0.1);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  border-top: 1px solid rgba(34, 211, 238, 0.1);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.1);
 }
 
 .stat {
@@ -419,7 +419,7 @@
   font-weight: 500;
   margin-top: auto;
   padding-top: 8px;
-  border-top: 1px solid rgba(56, 189, 248, 0.1);
+  border-top: 1px solid rgba(34, 211, 238, 0.1);
 }
 
 .empty-state {
@@ -445,7 +445,7 @@
 .spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid rgba(56, 189, 248, 0.2);
+  border: 3px solid rgba(34, 211, 238, 0.2);
   border-top: 3px solid var(--accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -497,8 +497,8 @@
 }
 
 .btn-secondary-edit {
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.25);
   color: var(--accent);
   padding: 8px 14px;
   border-radius: 6px;
@@ -512,7 +512,7 @@
 }
 
 .btn-secondary-edit:hover {
-  background: rgba(56, 189, 248, 0.18);
+  background: rgba(34, 211, 238, 0.18);
   border-color: var(--accent);
 }
 
@@ -523,7 +523,7 @@
   background: rgba(30, 41, 59, 0.4);
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
 }
 
 .input-row-inline {
@@ -532,8 +532,8 @@
 }
 
 .inline-edit-input {
-  background: #0f172a;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: var(--base);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   padding: 10px 12px;
   border-radius: 6px;
   color: #fff;
@@ -551,8 +551,8 @@
 }
 
 .inline-edit-textarea {
-  background: #0f172a;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: var(--base);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   padding: 10px 12px;
   border-radius: 6px;
   color: #fff;
@@ -580,7 +580,7 @@
 
 .action-btn.save {
   background: var(--accent);
-  color: #0f172a;
+  color: var(--base);
 }
 
 .action-btn.cancel {
@@ -608,7 +608,7 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .available-dives-list {
@@ -660,7 +660,7 @@
 
 .btn-add-link:hover {
   background: var(--accent);
-  color: #0f172a;
+  color: var(--base);
 }
 
 .empty-selection-text {

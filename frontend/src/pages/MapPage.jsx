@@ -13,8 +13,8 @@ import "./MapPage.css"
 
 /* ─── Depth → colour (Consistent App Palette) ─────────────────────── */
 function depthToColor(depth) {
-  if (!depth || depth === 0) return { hex: "#38bdf8", r: 56,  g: 189, b: 248 }
-  if (depth <= 10)           return { hex: "#38bdf8", r: 56,  g: 189, b: 248 }
+  if (!depth || depth === 0) return { hex: "var(--accent)", r: 56,  g: 189, b: 248 }
+  if (depth <= 10)           return { hex: "var(--accent)", r: 56,  g: 189, b: 248 }
   if (depth <= 20)           return { hex: "#22c55e", r: 34,  g: 197, b: 94  }
   if (depth <= 30)           return { hex: "#eab308", r: 234, g: 179, b: 8   }
   return                            { hex: "#ef4444", r: 239, g: 68,  b: 68  }
@@ -76,7 +76,7 @@ export default function MapPage() {
   const backgroundImageUrl = "https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png"
 
   const telemetryLegend = [
-    { hex: "#38bdf8", range: "0-10m", label: "Shallow" },
+    { hex: "var(--accent)", range: "0-10m", label: "Shallow" },
     { hex: "#22c55e", range: "11-20m", label: "Recreational" },
     { hex: "#eab308", range: "21-30m", label: "Deep Reef" },
     { hex: "#ef4444", range: "30m+", label: "Technical" }
@@ -294,7 +294,7 @@ export default function MapPage() {
           globeImageUrl={globeImageUrl}
           backgroundImageUrl={backgroundImageUrl}
           globeTileEngineUrl={(x,y,z) => satelliteBase.replace("{x}",x).replace("{y}",y).replace("{z}",z)}
-          backgroundColor="#0f172a"
+          backgroundColor="var(--base)"
           waitForGlobeReady={true}
 
           htmlElementsData={allMarkers}
@@ -493,9 +493,9 @@ export default function MapPage() {
                       }}
                     />
                     {showSuggest && suggestions.length > 0 && (
-                      <div style={{position:"absolute",top:"100%",left:0,right:0,background:"#1e293b",border:"1px solid rgba(255,255,255,0.1)",borderRadius:8,zIndex:10,maxHeight:180,overflowY:"auto"}}>
+                      <div style={{position:"absolute",top:"100%",left:0,right:0,background:"var(--surface-2)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:8,zIndex:10,maxHeight:180,overflowY:"auto"}}>
                         {suggestions.map((s, i) => (
-                          <button key={i} className="mp-suggest-item" style={{display:"block",width:"100%",textAlign:"left",padding:"6px 10px",fontSize:11,color:"#e2e8f0",background:"transparent",border:"none",borderBottom:i < suggestions.length-1 ? "1px solid rgba(255,255,255,0.05)" : "none",cursor:"pointer"}}
+                          <button key={i} className="mp-suggest-item" style={{display:"block",width:"100%",textAlign:"left",padding:"6px 10px",fontSize:11,color:"var(--ink)",background:"transparent",border:"none",borderBottom:i < suggestions.length-1 ? "1px solid rgba(255,255,255,0.05)" : "none",cursor:"pointer"}}
                             onMouseDown={() => {
                               setShopLocation(s.label.split(",")[0])
                               setShowSuggest(false)
@@ -538,7 +538,7 @@ export default function MapPage() {
                       <button key={p.id} className="mp-list-row" style={{padding:"4px 8px"}}
                         onClick={() => { setShopLocation(p.location?.split(",")[0] || p.name); fetchNearbyShops({ lat: p.lat, lng: p.lng }) }}
                       >
-                        <span className="mp-row-indicator" style={{background:"#38bdf8",flexShrink:0,width:6,height:6}} />
+                        <span className="mp-row-indicator" style={{background:"var(--accent)",flexShrink:0,width:6,height:6}} />
                         <span className="mp-row-text" style={{fontSize:11}}>{p.location?.split(",")[0] || p.name}</span>
                         <span style={{fontSize:9,color:"var(--muted)"}}>{p.maxDepthAtLocation}m</span>
                       </button>

@@ -56,12 +56,12 @@ export default function DiveTrendChart({ allDives = [] }) {
           </g>
 
           <path d={areaPath} fill="url(#trendAreaGrad)" />
-          <path d={linePath} fill="none" stroke="#38bdf8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={linePath} fill="none" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
 
           {coordinateMap.map((p, i) => (
             <g key={i} className="trend-node-group">
-              <circle cx={p.x} cy={p.y} r="4" fill="#0f172a" stroke="#90e0ef" strokeWidth="2" />
-              <text x={p.x} y={p.y - 10} textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold" fontFamily="sans-serif">
+              <circle cx={p.x} cy={p.y} r="4" fill="var(--base)" stroke="var(--accent)" strokeWidth="2" />
+              <text x={p.x} y={p.y - 10} textAnchor="middle" fill="var(--ink)" fontSize="10" fontWeight="bold" fontFamily="sans-serif">
                 {p.depth}m
               </text>
               <text x={p.x} y={chartHeight - 4} textAnchor="middle" fill="var(--muted)" fontSize="8" fontFamily="sans-serif">

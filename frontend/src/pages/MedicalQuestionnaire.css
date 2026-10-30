@@ -11,7 +11,7 @@
 }
 
 .medical-modal {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  background: linear-gradient(135deg, var(--base), var(--surface-2));
   border: 1px solid rgba(144, 224, 239, 0.2);
   border-radius: 24px;
   max-width: 650px;
@@ -36,13 +36,13 @@
 
 .medical-header h3 {
   margin: 0;
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 .medical-close {
   background: transparent;
   border: none;
-  color: #64748b;
+  color: var(--ink-3);
   font-size: 28px;
   cursor: pointer;
   padding: 0;
@@ -57,10 +57,10 @@
 .medical-disclaimer {
   padding: 16px 24px;
   margin: 0;
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(34, 211, 238, 0.05);
   border-bottom: 1px solid rgba(144, 224, 239, 0.1);
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--ink-3);
 }
 
 .medical-questions {
@@ -85,7 +85,7 @@
 .question-text {
   flex: 1;
   font-size: 14px;
-  color: #e2e8f0;
+  color: var(--ink);
 }
 
 .critical-badge {
@@ -154,17 +154,17 @@
 
 .medical-cancel-btn {
   background: transparent;
-  border: 1px solid #475569;
-  color: #94a3b8;
+  border: 1px solid var(--ink-3);
+  color: var(--ink-3);
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .medical-submit-btn {
-  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  background: linear-gradient(135deg, var(--accent), var(--accent));
   border: none;
-  color: #0f172a;
+  color: var(--base);
   padding: 10px 24px;
   border-radius: 10px;
   font-weight: 600;

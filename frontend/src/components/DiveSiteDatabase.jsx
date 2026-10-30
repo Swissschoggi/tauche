@@ -4,9 +4,11 @@ import { getAllDives } from '../api/diveApi'
 import { MapPin, Star, Calendar, Activity, Search, TrendingUp, Droplets, Eye, Plus, RefreshCw, X } from 'lucide-react'
 import { useDiveSites } from '../hooks/useDiveSites'
 import "./DiveSiteDatabase.css"
+import { useToast } from "../context/ToastContext"
 
 export default function DiveSiteDatabase() {
   const navigate = useNavigate()
+  const toast = useToast()
   const { sites, favoriteSites, toggleFavorite, addSite, importFromDives } = useDiveSites()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedSite, setSelectedSite] = useState(null)
@@ -39,13 +41,13 @@ export default function DiveSiteDatabase() {
       const dives = await getAllDives()
       if (dives && dives.length > 0) {
         importFromDives(dives)
-        alert(`Imported ${dives.length} dives into dive sites!`)
+        toast.success(`Imported ${dives.length} dives into dive sites!`)
       } else {
-        alert('No dives found to import')
+        toast.info('No dives found to import')
       }
     } catch (err) {
       console.error('Failed to import dives:', err)
-      alert('Failed to import dives')
+      toast.error('Failed to import dives')
     } finally {
       setIsImporting(false)
     }

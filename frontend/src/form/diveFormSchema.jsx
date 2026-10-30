@@ -1,11 +1,11 @@
 export const diveFormSchema = [
-  { name: "diveTitle", label: "Dive Title", type: "text" },
-  { name: "date", label: "Date", type: "date" },
-  { name: "location", label: "Location", type: "text" },
+  { name: "diveTitle", label: "Dive Title", type: "text", required: true },
+  { name: "date", label: "Date", type: "date", required: true },
+  { name: "location", label: "Location", type: "text", required: true },
   { name: "diveSite", label: "Dive Site", type: "text" },
   
-  { name: "depthMeters", label: "Depth (m)", type: "number" },
-  { name: "durationMinutes", label: "Duration (min)", type: "number" },
+  { name: "depthMeters", label: "Depth (m)", type: "number", required: true },
+  { name: "durationMinutes", label: "Duration (min)", type: "number", required: true },
   { name: "waterTemperatureCelsius", label: "Water Temp (°C)", type: "number" },
   { name: "visibilityMeters", label: "Visibility (m)", type: "number" },
   

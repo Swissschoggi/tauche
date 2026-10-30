@@ -149,9 +149,9 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
       <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
       <button className="nav-settings-global-btn" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
       <div className="analytics-empty">
-        <TrendingUp size={36} strokeWidth={1} style={{ color: '#475569' }} />
+        <TrendingUp size={36} strokeWidth={1} style={{ color: 'var(--ink-3)' }} />
         <p>No dive data to analyze yet</p>
-        <p style={{ fontSize: 12, color: '#64748b' }}>Log your first dive to see stats and trends</p>
+        <p style={{ fontSize: 12, color: 'var(--ink-3)' }}>Log your first dive to see stats and trends</p>
       </div>
     </div>
   )
@@ -198,10 +198,10 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
             </div>
           </div>
           <div className="stat-pill highlight-sac-pill">
-            <Droplets size={18} style={{ color: "#38bdf8" }} /> 
+            <Droplets size={18} style={{ color: "var(--accent)" }} /> 
             <div>
               <span className="pill-label">Avg SAC Rate</span>
-              <span className="pill-val" style={{ color: "#38bdf8" }}>{avgSacRate} {avgSacRate !== "N/A" ? "bar/min" : ""}</span>
+              <span className="pill-val" style={{ color: "var(--accent)" }}>{avgSacRate} {avgSacRate !== "N/A" ? "bar/min" : ""}</span>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
               <div className="chart-canvas-wrapper">
                 <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%">
                   <path d={areaPath} fill="url(#analyticsAreaGrad)" />
-                  <path d={linePath} fill="none" stroke="#38bdf8" strokeWidth="3" strokeLinecap="round" />
+                  <path d={linePath} fill="none" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" />
                   <defs>
                     <linearGradient id="analyticsAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                       <stop offset="0%" stopColor="rgba(56, 189, 248, 0.2)" />
@@ -252,7 +252,7 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
                 <div className="gas-bar-container">
                   <div className="gas-flexbox-bar">
                     <div style={{ width: `${nitroxPercentage}%`, background: "#34d399" }} title={`Nitrox: ${nitroxPercentage}%`} />
-                    <div style={{ width: `${100 - nitroxPercentage}%`, background: "#38bdf8" }} title={`Standard Air: ${100 - nitroxPercentage}%`} />
+                    <div style={{ width: `${100 - nitroxPercentage}%`, background: "var(--accent)" }} title={`Standard Air: ${100 - nitroxPercentage}%`} />
                   </div>
                   <div className="gas-legend">
                     <span className="legend-item nitrox-dot"><span /> Nitrox Logs ({nitroxCount})</span>
@@ -305,7 +305,7 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
                 <h3>✈️ No-Fly / Desaturation Countdown</h3>
                 <p className="card-subtext">Rolling 24-hour nitrogen residual surface containment requirement before commercial high-altitude flight exposures.</p>
               </div>
-              <Plane size={24} style={{ color: noFlyHoursLeft > 0 ? "#f59e0b" : "#64748b" }} />
+              <Plane size={24} style={{ color: noFlyHoursLeft > 0 ? "#f59e0b" : "var(--ink-3)" }} />
             </div>
 
             {dives.length === 0 ? (

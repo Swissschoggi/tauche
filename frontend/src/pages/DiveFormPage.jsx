@@ -4,12 +4,14 @@ import { createDive, updateDive, getDiveById, getEquipmentCloset, getBuddies } f
 import { diveFormSchema } from "../form/diveFormSchema"
 import { Settings } from "lucide-react"
 import { TANK_PRESETS } from '../constants/tankPresets'
+import { useToast } from "../context/ToastContext"
 import { useDiveSites } from '../hooks/useDiveSites'
 import "./DiveFormPage.css"
 
 export default function DiveFormPage() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const toast = useToast()
   const locationTimeoutRef = useRef(null)
 
   const [form, setForm] = useState(() => {
@@ -188,6 +190,7 @@ export default function DiveFormPage() {
     try {
       if (id) await updateDive(id, payload) 
       else await createDive(payload) 
+      toast.success(id ? "Dive updated" : "Dive logged")
       navigate("/")
     } catch (error) {
       setFormError(error.response?.data?.message || "Failed to save.")
@@ -213,7 +216,7 @@ export default function DiveFormPage() {
             if (field.name === "equipmentIds") {
               return (
                 <div key={field.name} className="form-group full-width-group">
-                  <label htmlFor={field.name}>{field.label}</label>
+                  <label htmlFor={field.name}>{field.label}{field.required ? " *" : ""}</label>
                   <select
                     id={field.name}
                     name={field.name}
@@ -232,7 +235,7 @@ export default function DiveFormPage() {
                       </option>
                     ))}
                   </select>
-                  <small style={{ color: '#64748b', fontSize: '11px' }}>
+                  <small style={{ color: 'var(--ink-3)', fontSize: '11px' }}>
                     Hold Ctrl/Cmd to select multiple items. Equipment usage will count toward service intervals.
                   </small>
                 </div>
@@ -242,7 +245,7 @@ export default function DiveFormPage() {
             if (field.name === "cylinderVolumeLiters") {
               return (
                 <div key={field.name} className="form-group tank-presets-container" style={{ position: 'relative' }}>
-                  <label htmlFor={field.name}>{field.label}</label>
+                  <label htmlFor={field.name}>{field.label}{field.required ? " *" : ""}</label>
                   <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                     <input
                       type="number"
@@ -276,7 +279,7 @@ export default function DiveFormPage() {
                       left: 0,
                       right: 0,
                       marginTop: '4px',
-                      background: '#1e293b',
+                      background: 'var(--surface-2)',
                       border: '1px solid rgba(56,189,248,0.3)',
                       borderRadius: '12px',
                       zIndex: 1000,
@@ -301,7 +304,7 @@ export default function DiveFormPage() {
                           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                         >
                           <div style={{ fontWeight: '600', color: '#f8fafc' }}>{preset.name}</div>
-                          <div style={{ fontSize: '11px', color: '#94a3b8' }}>
+                          <div style={{ fontSize: '11px', color: 'var(--ink-3)' }}>
                             {preset.volumeLiters}L @ {preset.workingPressureBar}bar - {preset.description}
                           </div>
                         </div>
@@ -317,7 +320,7 @@ export default function DiveFormPage() {
                 key={field.name} 
                 className={`form-group ${isFullWidth ? "full-width-group" : ""}`}
               >
-                <label htmlFor={field.name}>{field.label}</label>
+                <label htmlFor={field.name}>{field.label}{field.required ? " *" : ""}</label>
 
                 {field.name === "location" ? (
                   <div style={{ position: "relative" }}>

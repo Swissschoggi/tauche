@@ -3,6 +3,8 @@ import { Tag, Camera, Plus, Trash2, Loader } from 'lucide-react'
 import { getGalleryImages, uploadGalleryImage, deleteGalleryImage, updateGalleryImageTags, getImageUrl } from '../api/diveApi'
 import PhotoLightbox from '../components/PhotoLightbox'
 import './PhotoGallery.css'
+import { useToast } from "../context/ToastContext"
+import { useConfirm } from "../context/ConfirmContext"
 
 const COMMON_SPECIES = [
   'Sea Turtle', 'Green Turtle', 'Hawksbill Turtle',
@@ -19,6 +21,8 @@ const COMMON_SPECIES = [
 ]
 
 export default function PhotoGallery({ diveId }) {
+  const toast = useToast()
+  const confirmDialog = useConfirm()
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
@@ -54,7 +58,7 @@ export default function PhotoGallery({ diveId }) {
 
   const handleFileUpload = async (files) => {
     if (!diveId) {
-      alert('Please save the dive first before adding photos')
+      toast.error('Please save the dive first before adding photos')
       return
     }
     
@@ -64,7 +68,7 @@ export default function PhotoGallery({ diveId }) {
         await uploadGalleryImage(diveId, file)
       } catch (err) {
         console.error('Failed to upload image:', err)
-        alert('Failed to upload image: ' + err.message)
+        toast.error('Failed to upload image: ' + err.message)
       }
     }
     await loadGalleryImages()
@@ -72,14 +76,15 @@ export default function PhotoGallery({ diveId }) {
   }
 
   const handleDeletePhoto = async (imageId) => {
-    if (confirm('Remove this photo?')) {
-      try {
-        await deleteGalleryImage(diveId, imageId)
-        await loadGalleryImages()
-      } catch (err) {
-        console.error('Failed to delete image:', err)
-        alert('Failed to delete image')
-      }
+    const ok = await confirmDialog({ title: 'Remove photo?', message: 'Remove this photo?', confirmText: 'Remove', danger: true })
+    if (!ok) return
+    try {
+      await deleteGalleryImage(diveId, imageId)
+      await loadGalleryImages()
+      toast.success('Photo removed')
+    } catch (err) {
+      console.error('Failed to delete image:', err)
+      toast.error('Failed to delete image')
     }
   }
 
@@ -150,7 +155,7 @@ export default function PhotoGallery({ diveId }) {
         <div className="empty-gallery">
           <Camera size={32} strokeWidth={1} />
           <p>No photos yet. Add your first underwater shot!</p>
-          <small style={{ color: '#64748b', marginTop: '8px' }}>
+          <small style={{ color: 'var(--ink-3)', marginTop: '8px' }}>
             Note: Save the dive first before adding photos
           </small>
         </div>

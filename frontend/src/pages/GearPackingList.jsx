@@ -69,7 +69,7 @@ export default function GearPackingList({ diveType, onClose }) {
 
         <div className="packing-progress">
           <div className="progress-bar">
-            <div className="progress-fill" style={{ width: `${progress}%`, background: allRequiredChecked ? '#22c55e' : '#38bdf8' }} />
+            <div className="progress-fill" style={{ width: `${progress}%`, background: allRequiredChecked ? '#22c55e' : 'var(--accent)' }} />
           </div>
           <div className="progress-stats">
             <span>{Math.round(progress)}% Complete</span>
@@ -99,7 +99,7 @@ export default function GearPackingList({ diveType, onClose }) {
           <h4>🛠️ Optional Gear</h4>
           {gearList.optional.map(item => (
             <div key={item} className="packing-item" onClick={() => toggleItem(item)}>
-              {checkedItems[item] ? <CheckSquare size={18} color="#38bdf8" /> : <Square size={18} />}
+              {checkedItems[item] ? <CheckSquare size={18} color="var(--accent)" /> : <Square size={18} />}
               <span>{item}</span>
             </div>
           ))}
