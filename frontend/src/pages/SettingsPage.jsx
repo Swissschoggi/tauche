@@ -61,19 +61,24 @@ export default function SettingsPage() {
             <div className="setting-row">
               <div className="setting-info">
                 <label>Unit System</label>
-                <span>
-                  Currently using: <strong style={{ color: "var(--accent)" }}>
-                    {metricSystem ? "Metric (m, °C, bar, kg)" : "Imperial (ft, °F, psi, lbs)"}
-                  </strong>
-                </span>
+                <span>Choose how measurements are displayed across the app.</span>
               </div>
-              <input
-                type="checkbox"
-                className="toggle-switch"
-                checked={metricSystem}
-                onChange={() => setMetricSystem(prev => !prev)}
-                title={metricSystem ? "Switch to Imperial" : "Switch to Metric"}
-              />
+              <div className="unit-segmented" role="group" aria-label="Unit system">
+                <button
+                  type="button"
+                  className={`unit-seg ${metricSystem ? "unit-seg--active" : ""}`}
+                  onClick={() => setMetricSystem(true)}
+                >
+                  Metric
+                </button>
+                <button
+                  type="button"
+                  className={`unit-seg ${!metricSystem ? "unit-seg--active" : ""}`}
+                  onClick={() => setMetricSystem(false)}
+                >
+                  Imperial
+                </button>
+              </div>
             </div>
 
             <button type="submit" className="settings-save-btn">
