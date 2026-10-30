@@ -50,6 +50,7 @@ public class Certification {
     @Column(nullable = false)
     private Boolean isActive = true;
     
+    @Builder.Default
     @Column(nullable = false, updatable = false)
     private LocalDate createdAt = LocalDate.now();
     
