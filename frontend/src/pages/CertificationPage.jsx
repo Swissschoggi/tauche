@@ -17,7 +17,7 @@ export default function CertificationPage() {
   const [apiError, setApiError] = useState('')
 
   const [showAddModal, setShowAddModal] = useState(false)
-  const [newCert, setNewCert] = useState({ agency: "PADI", title: "", date: "", certNumber: "" })
+  const [newCert, setNewCert] = useState({ agency: "PADI", title: "", date: "", certNumber: "", instructor: "", diveShop: "" })
   const dateRef = useRef(null)
   const [saving, setSaving] = useState(false)
 
@@ -73,6 +73,8 @@ export default function CertificationPage() {
         agency: newCert.agency,
         dateIssued: dateVal,
         certificationNumber: newCert.certNumber || null,
+        instructor: newCert.instructor || null,
+        diveShop: newCert.diveShop || null,
         isActive: true
       })
       setEarnedCerts(prev => [created, ...prev])
@@ -178,6 +180,16 @@ export default function CertificationPage() {
                     {(c.certificationNumber || c.certNumber) && (
                       <div className="ID-field">
                         <span># {c.certificationNumber || c.certNumber}</span>
+                      </div>
+                    )}
+                    {c.instructor && (
+                      <div className="meta-field">
+                        Instructor: {c.instructor}
+                      </div>
+                    )}
+                    {c.diveShop && (
+                      <div className="meta-field">
+                        Dive shop: {c.diveShop}
                       </div>
                     )}
                   </div>
@@ -287,7 +299,26 @@ export default function CertificationPage() {
               </div>
               <div className="form-element">
                 <label>Certification Number</label>
-                <input type="text" placeholder="OW-98421-CH" value={newCert.certNumber} onChange={(e) => setNewCert(p => ({ ...p, certNumber: e.target.value }))} />
+                <input type="text" placeholder="12345678" value={newCert.certNumber} onChange={(e) => setNewCert(p => ({ ...p, certNumber: e.target.value }))} />
+              </div>
+              <div className="form-element">
+                <label>Instructor</label>
+                <input type="text" placeholder="Instructor name" value={newCert.instructor} onChange={(e) => setNewCert(p => ({ ...p, instructor: e.target.value }))} />
+              </div>
+              <div className="form-element">
+                <label>Dive Shop / Center</label>
+                <input type="text" placeholder="Dive center name" value={newCert.diveShop} onChange={(e) => setNewCert(p => ({ ...p, diveShop: e.target.value }))} />
+              </div>
+              <div className="form-element">
+                <a
+                  href="https://www.padi.com/courses"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--ghost btn--sm"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                >
+                  What this certification qualifies for ↗
+                </a>
               </div>
               <div className="modal-buttons">
                 <button type="button" className="modal-cancel-btn" onClick={() => setShowAddModal(false)}>Cancel</button>

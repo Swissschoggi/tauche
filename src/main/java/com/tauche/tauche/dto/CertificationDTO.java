@@ -28,6 +28,12 @@ public class CertificationDTO {
     @Size(max = 100)
     private String certificationNumber;
 
+    @Size(max = 200)
+    private String instructor;
+
+    @Size(max = 200)
+    private String diveShop;
+
     private Boolean isActive;
     private Boolean isExpired;
     private Integer daysUntilExpiry;

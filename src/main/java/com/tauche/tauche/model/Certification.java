@@ -41,7 +41,13 @@ public class Certification {
     
     @Column(length = 100)
     private String certificationNumber;
-    
+
+    @Column(length = 200)
+    private String instructor;
+
+    @Column(length = 200)
+    private String diveShop;
+
     @Column(nullable = false)
     private Boolean isActive = true;
     

@@ -29,6 +29,8 @@ public class CertificationService {
             .dateIssued(dto.getDateIssued())
             .expiryDate(dto.getExpiryDate())
             .certificationNumber(dto.getCertificationNumber())
+            .instructor(dto.getInstructor())
+            .diveShop(dto.getDiveShop())
             .isActive(true)
             .build();
         
@@ -71,7 +73,9 @@ public class CertificationService {
         cert.setDateIssued(dto.getDateIssued());
         cert.setExpiryDate(dto.getExpiryDate());
         cert.setCertificationNumber(dto.getCertificationNumber());
-        
+        cert.setInstructor(dto.getInstructor());
+        cert.setDiveShop(dto.getDiveShop());
+
         return mapToDTO(certificationRepository.save(cert));
     }
     
@@ -103,6 +107,8 @@ public class CertificationService {
             .dateIssued(cert.getDateIssued())
             .expiryDate(cert.getExpiryDate())
             .certificationNumber(cert.getCertificationNumber())
+            .instructor(cert.getInstructor())
+            .diveShop(cert.getDiveShop())
             .isActive(cert.getIsActive())
             .isExpired(isExpired)
             .daysUntilExpiry(daysUntilExpiry)
