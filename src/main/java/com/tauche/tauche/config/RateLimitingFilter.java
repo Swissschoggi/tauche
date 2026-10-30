@@ -76,10 +76,27 @@ public class RateLimitingFilter implements Filter {
     }
 
     private String getClientIp(HttpServletRequest request) {
-        String xf = request.getHeader("X-Forwarded-For");
-        if (xf != null && !xf.isBlank()) {
-            return xf.split(",")[0].trim();
+        String remote = request.getRemoteAddr();
+        // Only trust X-Forwarded-For when the immediate peer is a trusted
+        // reverse proxy, to prevent clients from spoofing their IP to bypass
+        // rate limiting.
+        if (isTrustedProxy(remote)) {
+            String xf = request.getHeader("X-Forwarded-For");
+            if (xf != null && !xf.isBlank()) {
+                String candidate = xf.split(",")[0].trim();
+                if (isValidIp(candidate)) return candidate;
+            }
         }
-        return request.getRemoteAddr();
+        return remote;
+    }
+
+    private boolean isTrustedProxy(String ip) {
+        return ip != null && (ip.equals("127.0.0.1") || ip.equals("0:0:0:0:0:0:0:1")
+                || ip.equals("::1") || ip.startsWith("10.") || ip.startsWith("172.")
+                || ip.startsWith("192.168."));
+    }
+
+    private boolean isValidIp(String ip) {
+        return ip != null && ip.matches("^[0-9a-fA-F:.]+$") && ip.length() <= 45;
     }
 }
