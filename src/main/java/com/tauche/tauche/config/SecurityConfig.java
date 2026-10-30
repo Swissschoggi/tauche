@@ -51,7 +51,7 @@ public class SecurityConfig {
             .authenticationProvider(authenticationProvider)
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/index.html", "/static/**", "/assets/**", "/favicon.ico", "/favicon.svg").permitAll()
-                .requestMatchers("/api/auth/nonce", "/api/auth/login", "/api/auth/register", "/api/config").permitAll()
+                .requestMatchers("/api/auth/login", "/api/auth/register", "/api/config").permitAll()
                 .requestMatchers("/api/dive-shops/**").permitAll()
                 .requestMatchers("/share/**", "/api/dives/share/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
