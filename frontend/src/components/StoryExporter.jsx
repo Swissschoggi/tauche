@@ -141,7 +141,8 @@ export default function StoryExporter({ dive, onClose }) {
     console.error('Story generation failed:', err)
     setIsGenerating(false)
   }
-  
+  }
+
   const downloadImage = () => {
     if (!generatedImage) return
     const link = document.createElement('a')
