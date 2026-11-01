@@ -71,7 +71,10 @@ export default function MapPage() {
   const [showSuggest,   setShowSuggest]   = useState(false)
   const suggestTimer = useRef(null)
 
-  const satelliteBase = "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+  const googleMapsKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+  const satelliteBase = googleMapsKey
+    ? `https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}&key=${googleMapsKey}`
+    : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
   const globeImageUrl = "https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-dark.jpg"
   const backgroundImageUrl = "https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png"
 

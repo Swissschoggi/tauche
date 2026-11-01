@@ -38,14 +38,10 @@ export const shareDive = async (dive, toast) => {
       throw new Error('No share URL returned from server')
     }
     
-    const shareText = `🤿 Check out my dive log: ${dive.diveTitle || 'Dive'} at ${dive.location || 'unknown location'}! Depth: ${dive.depthMeters || '?'}m, Duration: ${dive.durationMinutes || '?'}min`
-    const fullMessage = `${shareText}\n\nView online: ${shareUrl}`
-    
     if (navigator.share) {
       try {
         await navigator.share({
           title: `${dive.diveTitle || 'Dive'} - Tauche Log`,
-          text: shareText,
           url: shareUrl
         })
         return;
@@ -53,11 +49,11 @@ export const shareDive = async (dive, toast) => {
         console.log('Native share cancelled or failed, falling back to clipboard:', shareErr)
       }
     }
-    
+
     if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(fullMessage)
+      await navigator.clipboard.writeText(shareUrl)
     } else {
-      copyToClipboardFallback(fullMessage)
+      copyToClipboardFallback(shareUrl)
     }
     if (toast) toast.success('Share link copied to clipboard!')
     else alert('Share link copied to clipboard!\n\n' + shareUrl)
