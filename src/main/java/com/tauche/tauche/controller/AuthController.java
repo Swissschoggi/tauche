@@ -42,6 +42,9 @@ public class AuthController {
     @Value("${ADMIN_PASSWORD:}")
     private String adminPassword;
 
+    @Value("${PROMOTE_ADMIN_EMAIL:}")
+    private String promoteAdminEmail;
+
     @PostConstruct
     public void bootstrapAdmin() {
         if (adminEmail != null && !adminEmail.isBlank()
@@ -55,6 +58,15 @@ public class AuthController {
                 diverRepository.save(admin);
                 log.info("Bootstrapped admin account for {}", adminEmail);
             }
+        }
+        if (promoteAdminEmail != null && !promoteAdminEmail.isBlank()) {
+            diverRepository.findByEmail(promoteAdminEmail).ifPresent(diver -> {
+                if (!"ADMIN".equals(diver.getRole())) {
+                    diver.setRole("ADMIN");
+                    diverRepository.save(diver);
+                    log.info("Promoted {} to ADMIN", promoteAdminEmail);
+                }
+            });
         }
     }
 

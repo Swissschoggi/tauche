@@ -151,7 +151,7 @@ docker compose down -v       # WARNING: deletes postgres_data volume
 | `ALLOWED_ORIGINS` | `http://localhost:5173` | Comma-separated CORS origins. In single-host Docker deployments the request's own origin is also auto-allowed, so this is mainly for split-host setups. |
 | `ADMIN_EMAIL` | (empty) | If set together with `ADMIN_PASSWORD`, an admin account is created on first startup if it does not yet exist. |
 | `ADMIN_PASSWORD` | (empty) | Stored with BCrypt. No complexity check is applied at bootstrap (registration rules do not apply). |
-| `RESET_ADMIN_PASSWORD` | (empty) | If set, resets the password of the hardcoded account `fynn.gaechter@gmail.com`. Remove after use. |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | (empty) | Bootstrap an admin account on first startup if it does not exist. |
 | `PORT` | `8080` | Spring Boot listen port. Render/Heroku set this automatically. |
 | `BACKEND_PORT` | `8080` | Only feeds the `/api/config` response; keep in sync with `PORT`. |
 | `SERVER_ADDRESS` | — | Present in `.env.example` but **not consumed** by the app (the app always binds `0.0.0.0`). Reserved/unused. |
@@ -429,8 +429,8 @@ same-origin API client does not support). Recommended approach:
   ≥ 8 chars, upper + lower + digit.
 - To create an admin, set `ADMIN_EMAIL` + `ADMIN_PASSWORD` before first start;
   the account is bootstrapped only if it does not already exist.
-- To reset the owner account password, set `RESET_ADMIN_PASSWORD` (targets
-  `fynn.gaechter@gmail.com`); remove the var afterwards.
+- To change an admin password, update it directly in the database or create a
+  new admin via `ADMIN_EMAIL`/`ADMIN_PASSWORD` and demote the old one.
 - Admin endpoints live under `/api/admin/**` and require role `ADMIN`.
 
 ---
@@ -497,7 +497,7 @@ sudo chown -R 100:101 uploads
 - [ ] `.env` is in `.gitignore` (it is) and never committed.
 - [ ] Postgres port not exposed publicly (remove `ports:` mapping in prod, or firewall it).
 - [ ] HTTPS enforced at the proxy (HSTS is already sent by the app).
-- [ ] `ADMIN_PASSWORD` strong; `RESET_ADMIN_PASSWORD` removed after use.
+- [ ] `ADMIN_PASSWORD` strong and not committed.
 - [ ] Uploads directory not directly web-listable (app serves via `/uploads/**` with cache headers; no directory listing).
 - [ ] Backups automated and tested.
 - [ ] Dependencies updated periodically (`mvn versions:display-dependency-updates`).
