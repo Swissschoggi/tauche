@@ -120,12 +120,16 @@ Should be on `http://localhost:5173`.
 
 ## Docker Deployment
 
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for the full production guide
+(env vars, volumes, permissions, reverse proxy, backups, troubleshooting).
 
 ```bash
 wget https://raw.githubusercontent.com/Swissschoggi/tauche/refs/heads/main/docker-compose.yml
 wget https://raw.githubusercontent.com/Swissschoggi/tauche/refs/heads/main/.env.example
 mv .env.example .env
-docker-compose up -d
+# edit .env (JWT_SECRET, DB password, ...)
+mkdir -p uploads && sudo chown -R 100:101 uploads
+docker compose up -d
 ```
 
 ---
