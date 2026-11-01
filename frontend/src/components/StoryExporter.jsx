@@ -10,16 +10,16 @@ export default function StoryExporter({ dive, onClose }) {
 
   const generateStoryImage = async () => {
     setIsGenerating(true)
-    
+    try {
     // Create canvas
     const canvas = document.createElement('canvas')
     canvas.width = 1080  // Instagram story size
     canvas.height = 1920
     const ctx = canvas.getContext('2d')
-    
+
     // Background gradient (ocean theme)
     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height)
-    gradient.addColorStop(0, 'var(--base)')
+    gradient.addColorStop(0, '#07101f')
     gradient.addColorStop(0.5, '#1e3a8a')
     gradient.addColorStop(1, '#020617')
     ctx.fillStyle = gradient
@@ -50,10 +50,10 @@ export default function StoryExporter({ dive, onClose }) {
     
     // Depth - big number
     ctx.font = 'bold 140px "Inter", system-ui'
-    ctx.fillStyle = 'var(--accent)'
+    ctx.fillStyle = '#22d3ee'
     ctx.fillText(`${dive.depthMeters || '?'}m`, canvas.width / 2, 550)
     ctx.font = '40px "Inter", system-ui'
-    ctx.fillStyle = 'var(--ink-3)'
+    ctx.fillStyle = '#8b96a8'
     ctx.fillText('MAX DEPTH', canvas.width / 2, 650)
     
     // Duration
@@ -64,7 +64,7 @@ export default function StoryExporter({ dive, onClose }) {
     ctx.fillStyle = '#34d399'
     ctx.fillText('min', canvas.width / 2 + 30, 840)
     ctx.font = '40px "Inter", system-ui'
-    ctx.fillStyle = 'var(--ink-3)'
+    ctx.fillStyle = '#8b96a8'
     ctx.fillText('BOTTOM TIME', canvas.width / 2, 930)
     
     // Location
@@ -75,48 +75,52 @@ export default function StoryExporter({ dive, onClose }) {
     
     // Date
     ctx.font = '28px "Inter", system-ui'
-    ctx.fillStyle = 'var(--ink-3)'
+    ctx.fillStyle = '#8b96a8'
     ctx.fillText(dive.date || new Date().toISOString().split('T')[0], canvas.width / 2, 1280)
     
     // Buddy if exists
     if (dive.buddy) {
       ctx.font = '28px "Inter", system-ui'
-      ctx.fillStyle = 'var(--ink-3)'
+      ctx.fillStyle = '#8b96a8'
       ctx.fillText(`🤝 With ${dive.buddy}`, canvas.width / 2, 1420)
     }
     
     // Bottom branding
     ctx.font = '20px "Inter", system-ui'
-    ctx.fillStyle = 'var(--accent)'
+    ctx.fillStyle = '#22d3ee'
     ctx.fillText('TAUCHE', canvas.width / 2, canvas.height - 80)
     ctx.font = '16px "Inter", system-ui'
-    ctx.fillStyle = 'var(--ink-3)'
+    ctx.fillStyle = '#8b96a8'
     ctx.fillText('dive logbook', canvas.width / 2, canvas.height - 50)
     
     // Add dive image if exists (circular)
     if (dive.imagePath) {
       try {
         const img = new Image()
-        img.crossOrigin = 'Anonymous'
-        await new Promise((resolve, reject) => {
+        // Only set crossOrigin for absolute (cross-origin) URLs
+        if (/^https?:\/\//i.test(dive.imagePath)) {
+          img.crossOrigin = 'Anonymous'
+        }
+        await new Promise((resolve) => {
+          const timer = setTimeout(resolve, 5000)
           img.onload = () => {
-            // Circular mask for profile picture style
-            ctx.save()
-            ctx.beginPath()
-            ctx.arc(canvas.width / 2, 1650, 100, 0, Math.PI * 2)
-            ctx.clip()
-            ctx.drawImage(img, canvas.width / 2 - 100, 1550, 200, 200)
-            ctx.restore()
-            
-            // Border
-            ctx.beginPath()
-            ctx.arc(canvas.width / 2, 1650, 100, 0, Math.PI * 2)
-            ctx.strokeStyle = 'var(--accent)'
-            ctx.lineWidth = 4
-            ctx.stroke()
+            clearTimeout(timer)
+            try {
+              ctx.save()
+              ctx.beginPath()
+              ctx.arc(canvas.width / 2, 1650, 100, 0, Math.PI * 2)
+              ctx.clip()
+              ctx.drawImage(img, canvas.width / 2 - 100, 1550, 200, 200)
+              ctx.restore()
+              ctx.beginPath()
+              ctx.arc(canvas.width / 2, 1650, 100, 0, Math.PI * 2)
+              ctx.strokeStyle = '#22d3ee'
+              ctx.lineWidth = 4
+              ctx.stroke()
+            } catch (e) { console.error('Draw image failed:', e) }
             resolve()
           }
-          img.onerror = () => resolve() // Continue even if image fails to load
+          img.onerror = () => { clearTimeout(timer); resolve() }
           img.src = dive.imagePath
         })
       } catch (err) {
@@ -125,8 +129,16 @@ export default function StoryExporter({ dive, onClose }) {
     }
     
     // Convert to PNG
-    const imageUrl = canvas.toDataURL('image/png')
-    setGeneratedImage(imageUrl)
+    let imageUrl = null
+    try {
+      imageUrl = canvas.toDataURL('image/png')
+    } catch (e) {
+      console.error('toDataURL failed (tainted canvas?):', e)
+    }
+    if (imageUrl) setGeneratedImage(imageUrl)
+    setIsGenerating(false)
+  } catch (err) {
+    console.error('Story generation failed:', err)
     setIsGenerating(false)
   }
   
