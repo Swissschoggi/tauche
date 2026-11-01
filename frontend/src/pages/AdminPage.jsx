@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { getDiverProfile } from "../api/diveApi"
 import {
   Shield, Users, BarChart3, Activity, Trash2, ToggleLeft
 } from "lucide-react"
@@ -21,6 +22,11 @@ export default function AdminPage() {
   useEffect(() => {
     async function load() {
       try {
+        const profile = await getDiverProfile()
+        if (profile?.role !== "ADMIN") {
+          navigate("/", { replace: true })
+          return
+        }
         const [usersData, statsData] = await Promise.all([
           adminGetUsers(),
           adminGetStats()
@@ -29,12 +35,13 @@ export default function AdminPage() {
         setStats(statsData)
       } catch (err) {
         console.error("Failed to load admin data:", err)
+        navigate("/", { replace: true })
       } finally {
         setLoading(false)
       }
     }
     load()
-  }, [])
+  }, [navigate])
 
   async function handleToggleEnabled(id) {
     try {
