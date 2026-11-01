@@ -359,14 +359,14 @@ export default function TripsPage() {
   if (view === 'form') {
     return (
       <div className="trips-page">
-        <button className="back-dashboard-global-btn" onClick={() => setView(formMode === 'edit' ? 'detail' : 'list')}>
+        <button className="trips-back-btn" onClick={() => setView(formMode === 'edit' ? 'detail' : 'list')}>
           ← {formMode === 'edit' ? 'Cancel Edit' : 'Back'}
         </button>
 
         <div className="trips-form-wrapper">
           <div className="trips-form-card">
             <div className="trips-form-header">
-              <h2>{formMode === 'create' ? '✈️ Plan New Trip' : '✏️ Edit Trip'}</h2>
+              <h2>{formMode === 'create' ? 'Plan New Trip' : 'Edit Trip'}</h2>
               <p>Document your dive expedition details</p>
             </div>
 
@@ -818,7 +818,7 @@ export default function TripsPage() {
 
     return (
       <div className="trips-page">
-        <button className="back-dashboard-global-btn" onClick={() => setView('list')}>
+        <button className="trips-back-btn" onClick={() => setView('list')}>
           ← All Trips
         </button>
 
@@ -1119,7 +1119,7 @@ export default function TripsPage() {
 
     return (
       <div className="trips-page">
-        <button className="back-dashboard-global-btn" onClick={() => setView('list')}>
+        <button className="trips-back-btn" onClick={() => setView('list')}>
           ← All Trips
         </button>
         <div className="trips-dashboard">
@@ -1212,7 +1212,7 @@ export default function TripsPage() {
   // ──────────────────────────────────────
   return (
     <div className="trips-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate('/')}>
+      <button className="trips-back-btn" onClick={() => navigate('/')}>
         ← Dashboard
       </button>
 
@@ -1229,7 +1229,7 @@ export default function TripsPage() {
               <BarChart3 size={16} /> Dashboard
             </button>
             <button className="trips-btn-secondary" onClick={() => fileInputRef.current?.click()} disabled={importing}>
-              📥 Import
+              <Download size={14} /> Import
             </button>
             <input
               ref={fileInputRef}

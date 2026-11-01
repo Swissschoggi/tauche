@@ -102,7 +102,7 @@ export default function TripDetailPage() {
       <div className="trip-detail-page">
         <div className="error-fallback">
           <p>{error || 'The requested dive trip could not be found.'}</p>
-          <button className="back-dashboard-global-btn" onClick={() => navigate('/trips')}>
+          <button className="trips-back-btn" onClick={() => navigate('/trips')}>
             Return to Trips
           </button>
         </div>
@@ -112,7 +112,7 @@ export default function TripDetailPage() {
 
   return (
     <div className="trip-detail-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate('/trips')}>
+      <button className="trips-back-btn" onClick={() => navigate('/trips')}>
         <ArrowLeft size={16} /> Back to Trips
       </button>
 

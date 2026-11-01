@@ -1681,3 +1681,14 @@
 .trips-buddy-search-err {
   color: #fca5a5;
 }
+.trips-back-btn {
+  position: absolute; top: var(--space-xl); left: var(--space-xl); z-index: 100;
+  background: var(--surface) !important; backdrop-filter: blur(12px);
+  padding: var(--space-s) var(--space-m); min-height: 40px;
+  border-radius: var(--radius); border: var(--border) !important;
+  box-shadow: var(--shadow-1); color: var(--accent) !important;
+  font-size: var(--step--1); font-weight: 600; white-space: nowrap;
+  cursor: pointer; transition: var(--dur-fast) var(--ease);
+  display: inline-flex; align-items: center; gap: var(--space-2xs);
+}
+.trips-back-btn:hover { background: var(--surface-2) !important; border-color: var(--line-2) !important; color: var(--ink) !important; transform: translateY(-1px); }
