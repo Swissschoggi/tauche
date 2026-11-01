@@ -88,10 +88,21 @@ The app listens on **host port 8989** (container port 8080). PostgreSQL is on
 host port `${POSTGRES_PORT}` (default `5432`, but `.env.example` sets
 `5443`).
 
-### 3.1 Building your own image (instead of pulling `swissschoggi/tauche:latest`)
+### 3.1 Using the prebuilt image (no build needed)
 
-`docker-compose.yml` references a prebuilt image. If you changed code, build
-locally and override:
+The compose file pulls a published image, so **you do not need to build
+anything**:
+
+- `swissschoggi/tauche:latest` — stable
+- `swissschoggi/tauche:dev` — bleeding edge (matches the maintainer's
+  running instance)
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+If you modified the source, build locally and override the image:
 
 ```bash
 docker build -t tauche:local .
