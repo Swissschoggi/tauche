@@ -559,8 +559,11 @@ tbody tr:hover { background: var(--surface-2); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
 
+/* Legacy global buttons are superseded by TopBar; hide them to avoid duplicate nav. */
+.back-dashboard-global-btn, .nav-settings-global-btn { display: none !important; }
+
 /* legacy global buttons kept for old pages */
-.back-dashboard-global-btn, .nav-settings-global-btn {
+.back-dashboard-global-btn.legacy, .nav-settings-global-btn.legacy {
   position: absolute; top: var(--space-xl); z-index: 100;
   background: var(--surface) !important; backdrop-filter: blur(12px);
   padding: var(--space-s) var(--space-m); min-height: 40px;

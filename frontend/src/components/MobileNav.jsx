@@ -48,7 +48,7 @@ export default function MobileNav() {
             onClick={() => go(item.path)}
             aria-current={isActive(item.path) ? "page" : undefined}
           >
-            <item.icon size={20} />
+            <item.icon size={22} />
             <span>{item.label}</span>
           </button>
         ))}
@@ -58,7 +58,7 @@ export default function MobileNav() {
           aria-haspopup="dialog"
           aria-expanded={moreOpen}
         >
-          <MoreHorizontal size={20} />
+          <MoreHorizontal size={22} />
           <span>More</span>
         </button>
       </nav>
@@ -92,7 +92,7 @@ export default function MobileNav() {
                   className={`mobile-nav-sheet-item ${isActive(item.path) ? "mobile-nav-sheet-item--active" : ""}`}
                   onClick={() => go(item.path)}
                 >
-                  <item.icon size={20} />
+                  <item.icon size={22} />
                   <span>{item.label}</span>
                 </button>
               ))}
