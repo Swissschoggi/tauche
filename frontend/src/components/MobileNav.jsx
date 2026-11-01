@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import { getDiverProfile } from "../api/diveApi"
 import {
   Home, PlusCircle, Map, BarChart3, MoreHorizontal, X,
-  MapPin, TowerControl, Wrench, Award, Fish, User, Settings,
+  MapPin, TowerControl, Wrench, Award, Fish, User, Settings, Shield,
 } from "lucide-react"
 
 const allItems = [
@@ -30,6 +31,13 @@ export default function MobileNav() {
   const navigate = useNavigate()
   const location = useLocation()
   const [moreOpen, setMoreOpen] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    getDiverProfile().then((p) => {
+      if (p && p.role === "ADMIN") setIsAdmin(true)
+    }).catch(() => {})
+  }, [])
 
   const go = (path) => {
     navigate(path)
@@ -96,6 +104,15 @@ export default function MobileNav() {
                   <span>{item.label}</span>
                 </button>
               ))}
+              {isAdmin && (
+                <button
+                  className={`mobile-nav-sheet-item ${isActive("/admin") ? "mobile-nav-sheet-item--active" : ""}`}
+                  onClick={() => go("/admin")}
+                >
+                  <Shield size={22} />
+                  <span>Admin</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

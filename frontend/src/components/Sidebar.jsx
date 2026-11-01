@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import {
   Home, PlusCircle, Map, BarChart3, MapPin, TowerControl,
-  Wrench, Award, Fish, User, Settings, Sun, Moon,
+  Wrench, Award, Fish, User, Settings, Sun, Moon, Shield,
 } from "lucide-react"
 import { useTheme } from "../context/ThemeContext"
+import { getDiverProfile } from "../api/diveApi"
 import "./Sidebar.css"
 
 const items = [
@@ -20,6 +22,14 @@ const items = [
 
 export default function Sidebar() {
   const { theme, toggle } = useTheme()
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    getDiverProfile().then((p) => {
+      if (p && p.role === "ADMIN") setIsAdmin(true)
+    }).catch(() => {})
+  }, [])
+
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
@@ -39,6 +49,11 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="sidebar-footer">
+        {isAdmin && (
+          <NavLink to="/admin" className={({ isActive }) => `sidebar-link ${isActive ? "sidebar-link--active" : ""}`}>
+            <Shield size={18} /> <span>Admin</span>
+          </NavLink>
+        )}
         <NavLink to="/profile" className={({ isActive }) => `sidebar-link ${isActive ? "sidebar-link--active" : ""}`}>
           <User size={18} /> <span>Profile</span>
         </NavLink>
