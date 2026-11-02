@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getDiverProfile } from "../api/diveApi"
 import {
-  Shield, Users, BarChart3, Activity, Trash2, ToggleLeft
+  Shield, Users, BarChart3, Activity, Trash2, Power
 } from "lucide-react"
 import {
   adminGetUsers, adminGetStats, adminUpdateRole,
@@ -139,7 +139,7 @@ export default function AdminPage() {
                         title={u.enabled ? "Disable" : "Enable"}
                         onClick={() => handleToggleEnabled(u.id)}
                       >
-                        <ToggleLeft size={16} />
+                        <Power size={16} />
                       </button>
                       <button
                         className="btn-icon btn-danger-icon"
