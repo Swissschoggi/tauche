@@ -123,9 +123,7 @@
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .btn-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
+  display: block;
 }
 
 .btn-icon:hover {
