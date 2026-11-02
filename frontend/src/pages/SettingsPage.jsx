@@ -44,7 +44,7 @@ export default function SettingsPage() {
 
   return (
     <div className="settings-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>
         ← Back to Dashboard
       </button>
 

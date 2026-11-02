@@ -155,7 +155,7 @@ export default function CertificationPage() {
   return (
     <div className="certification-wallet-page">
       <div className="wallet-header-controls no-print">
-        <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>
+        <button className="btn btn--ghost" onClick={() => navigate("/")}>
           ← Back to Dashboard
         </button>
         <div className="wallet-action-group">

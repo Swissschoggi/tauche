@@ -148,10 +148,10 @@ const isAdmin = profile?.role === "ADMIN"
 
 return (
   <div className="profile-page-container">
-    <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>
+    <button className="btn btn--ghost" onClick={() => navigate("/")}>
       ← Back to Dashboard
     </button>
-    <button className="nav-settings-global-btn" onClick={() => navigate("/settings")}>
+    <button className="btn btn--ghost" onClick={() => navigate("/settings")}>
       <Settings size={16} /> Settings
     </button>
 

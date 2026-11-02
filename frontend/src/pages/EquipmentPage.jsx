@@ -135,7 +135,7 @@ export default function EquipmentPage() {
   return (
     <div className="equipment-page">
       <div className="equipment-controls">
-        <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
+        <button className="btn btn--ghost" onClick={() => navigate("/")}>← Back to Dashboard</button>
         <button className="equipment-add-btn" onClick={() => setShowAddModal(true)}>
           <Plus size={16} /> Add Gear
         </button>

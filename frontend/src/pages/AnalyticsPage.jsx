@@ -135,8 +135,8 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
 
   if (loading) return (
     <div className="analytics-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
-      <button className="nav-settings-global-btn" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>← Back to Dashboard</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
       <div className="analytics-loading">
         <div className="analytics-spinner" />
         <p>Loading telemetry data...</p>
@@ -146,8 +146,8 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
 
   if (dives.length === 0) return (
     <div className="analytics-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
-      <button className="nav-settings-global-btn" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>← Back to Dashboard</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
       <div className="analytics-empty">
         <TrendingUp size={36} strokeWidth={1} style={{ color: 'var(--ink-3)' }} />
         <p>No dive data to analyze yet</p>
@@ -158,8 +158,8 @@ const minTemp = validTemps.length ? Math.min(...validTemps) : null;
 
   return (
     <div className="analytics-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
-      <button className="nav-settings-global-btn" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>← Back to Dashboard</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
       
       <div className="analytics-container">
         <div className="analytics-header">

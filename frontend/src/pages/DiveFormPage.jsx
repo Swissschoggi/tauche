@@ -201,8 +201,8 @@ export default function DiveFormPage() {
 
   return (
     <div className="dive-form-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
-      <button className="nav-settings-global-btn" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>← Back to Dashboard</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/settings")}><Settings size={16} /> Settings</button>
       
       <div className="card">
         <h2>{id ? "Edit Dive Log" : "Log New Dive"}</h2>

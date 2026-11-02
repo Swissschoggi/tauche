@@ -80,7 +80,7 @@ export default function AdminPage() {
 
   return (
     <div className="admin-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>
         ← Back to Dashboard
       </button>
 

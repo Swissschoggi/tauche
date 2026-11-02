@@ -269,7 +269,7 @@ export default function DiveInfo() {
 
   return (
     <div className="dive-detail-page">
-      <button className="back-dashboard-global-btn" onClick={() => navigate("/")}>← Back to Dashboard</button>
+      <button className="btn btn--ghost" onClick={() => navigate("/")}>← Back to Dashboard</button>
       
       <div className="dive-hero">
         <img 
