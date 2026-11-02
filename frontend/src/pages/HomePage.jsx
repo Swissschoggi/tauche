@@ -141,7 +141,7 @@ export default function HomePage() {
         <div className="header-actions">
           {selectedIds.length > 0 && (
             <button className="btn-danger" onClick={handleDeleteSelected}>
-              Delete ({selectedIds.length})
+              <Trash2 size={16} /> Delete ({selectedIds.length})
             </button>
           )}
 

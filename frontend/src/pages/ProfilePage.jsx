@@ -5,7 +5,7 @@ import {
   getBuddies, getPendingBuddyRequests, getOutgoingBuddyRequests, sendBuddyRequest,
   acceptBuddyRequest, removeBuddy, searchUsers, getBuddyProfile
 } from "../api/diveApi"
-import { Settings, UserPlus, Check, X, Search, Shield, Activity, TrendingUp, Clock, Droplets } from "lucide-react"
+import { Settings, UserPlus, Check, X, Search, Shield, Activity, TrendingUp, Clock, Droplets, User, Users, LogOut } from "lucide-react"
 import "./ProfilePage.css"
 import { useConfirm } from "../context/ConfirmContext"
 import { useToast } from "../context/ToastContext"
@@ -157,10 +157,10 @@ return (
 
     <div className="profile-tabs">
       <button className={tab === "profile" ? "active" : ""} onClick={() => setTab("profile")}>
-        Profile
+        <User size={14} /> Profile
       </button>
       <button className={tab === "buddies" ? "active" : ""} onClick={() => setTab("buddies")}>
-        Buddies ({buddies.length})
+        <Users size={14} /> Buddies ({buddies.length})
       </button>
       {isAdmin && (
         <button className="admin-nav-btn" onClick={() => navigate("/admin")}>
@@ -185,7 +185,7 @@ return (
         </div>
 
         <button onClick={handleLogout} className="logout-action-btn">
-          Terminate Session (Logout)
+          <LogOut size={16} /> Terminate Session (Logout)
         </button>
       </div>
     )}
