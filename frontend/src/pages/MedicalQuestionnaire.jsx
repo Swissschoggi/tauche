@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { X } from 'lucide-react'
 import './MedicalQuestionnaire.css'
 
 const MEDICAL_QUESTIONS = [
@@ -105,7 +104,7 @@ export default function MedicalQuestionnaire({ onComplete, onClose }) {
         )}
 
         <div className="medical-actions">
-          <button onClick={onClose} className="medical-cancel-btn"><X size={14} /> Close</button>
+          <button onClick={onClose} className="medical-cancel-btn">Close</button>
           <button onClick={handleSubmit} className="medical-submit-btn">
             {hasAnswered ? 'Update & Save' : 'Save Responses'}
           </button>
