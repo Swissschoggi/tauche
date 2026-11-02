@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { getDiverProfile } from "../api/diveApi"
-import { Sliders, Shield, Activity } from "lucide-react"
+import { Sliders, Shield, Activity, Save } from "lucide-react"
 import "./SettingsPage.css"
 
 export default function SettingsPage() {
@@ -82,7 +82,7 @@ export default function SettingsPage() {
             </div>
 
             <button type="submit" className="settings-save-btn">
-              Apply
+              <Save size={16} /> Apply
             </button>
             {saveStatus && <p className="settings-status-msg">{saveStatus}</p>}
           </form>

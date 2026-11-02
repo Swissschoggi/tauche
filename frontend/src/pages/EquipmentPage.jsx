@@ -434,7 +434,7 @@ export default function EquipmentPage() {
               </div>
 
               <div className="equipment-modal-actions">
-                <button type="button" className="equipment-btn-secondary" onClick={() => setShowAddModal(false)}>Cancel</button>
+                <button type="button" className="equipment-btn-secondary" onClick={() => setShowAddModal(false)}><X size={14} /> Cancel</button>
                 <button type="submit" className="equipment-btn-primary">Save to Closet Locker</button>
               </div>
             </form>

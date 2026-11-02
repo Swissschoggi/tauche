@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { getAllDives, getDiverProfile, getCertifications, createCertification, updateCertification, deleteCertification } from "../api/diveApi"
-import { Award, Plus, Trash2, ShieldCheck, Printer, Calendar, ShieldAlert, Loader2, Edit2 } from "lucide-react"
+import { Award, Plus, Trash2, ShieldCheck, Printer, Calendar, ShieldAlert, Loader2, Edit2, X } from "lucide-react"
 import "./CertificationPage.css"
 import EmptyState from "../components/EmptyState"
 
@@ -364,7 +364,7 @@ export default function CertificationPage() {
                 </a>
               </div>
               <div className="modal-buttons">
-                <button type="button" className="modal-cancel-btn" onClick={() => setShowAddModal(false)}>Cancel</button>
+                <button type="button" className="modal-cancel-btn" onClick={() => setShowAddModal(false)}><X size={14} /> Cancel</button>
                 <button type="submit" className="modal-submit-btn" disabled={saving}>
                   {saving ? 'Saving...' : 'Save Certificate'}
                 </button>
@@ -421,7 +421,7 @@ export default function CertificationPage() {
                 </a>
               </div>
               <div className="modal-buttons">
-                <button type="button" className="modal-cancel-btn" onClick={() => setEditingCert(null)}>Cancel</button>
+                <button type="button" className="modal-cancel-btn" onClick={() => setEditingCert(null)}><X size={14} /> Cancel</button>
                 <button type="submit" className="modal-submit-btn" disabled={saving}>
                   {saving ? 'Saving...' : 'Update Certificate'}
                 </button>

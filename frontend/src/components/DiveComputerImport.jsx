@@ -162,7 +162,7 @@ export default function DiveComputerImport({ onDone }) {
               </>
             )}
             <div className="dci-actions">
-              <button className="dci-btn dci-btn--ghost" onClick={() => setOpen(false)}>Cancel</button>
+              <button className="dci-btn dci-btn--ghost" onClick={() => setOpen(false)}><X size={14} /> Cancel</button>
               <button className="dci-btn" onClick={doImport} disabled={importing || rows.length === 0}>
                 {importing ? "Importing…" : `Import ${rows.length} dive${rows.length === 1 ? "" : "s"}`}
               </button>
